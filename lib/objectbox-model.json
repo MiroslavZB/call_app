@@ -4,44 +4,166 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:727370358604762605",
-      "lastPropertyId": "4:8816784739354290318",
-      "name": "Note",
+      "id": "2:908501058828566114",
+      "lastPropertyId": "27:7200074132348787700",
+      "name": "Contact",
       "properties": [
         {
-          "id": "1:7960758831185025340",
+          "id": "1:6554116169441388952",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:6809843709899125537",
-          "name": "text",
-          "type": 9
-        },
-        {
-          "id": "3:2627841558101593035",
-          "name": "comment",
-          "type": 9
-        },
-        {
-          "id": "4:8816784739354290318",
+          "id": "2:3571340550331656589",
           "name": "date",
           "type": 10
+        },
+        {
+          "id": "3:9174826443931334619",
+          "name": "firstName",
+          "type": 9
+        },
+        {
+          "id": "4:7239815409867055114",
+          "name": "phone",
+          "type": 9
+        },
+        {
+          "id": "5:1791579712902758417",
+          "name": "photo",
+          "type": 9
+        },
+        {
+          "id": "6:8916332417915906448",
+          "name": "lastName",
+          "type": 9
+        },
+        {
+          "id": "7:5285576211315750249",
+          "name": "company",
+          "type": 9
+        },
+        {
+          "id": "8:3235901402730081087",
+          "name": "email",
+          "type": 9
+        },
+        {
+          "id": "9:7631752878074362172",
+          "name": "label",
+          "type": 9
+        },
+        {
+          "id": "10:2675998410417279425",
+          "name": "significantDate",
+          "type": 10
+        },
+        {
+          "id": "11:4241096606666077152",
+          "name": "significantDateLabel",
+          "type": 9
+        },
+        {
+          "id": "12:6203722158275323781",
+          "name": "phoneticLastName",
+          "type": 9
+        },
+        {
+          "id": "13:1220260734375487121",
+          "name": "phoneticMiddleName",
+          "type": 9
+        },
+        {
+          "id": "14:8802724971380217074",
+          "name": "phoneticFirstName",
+          "type": 9
+        },
+        {
+          "id": "15:4335707583650367225",
+          "name": "nickname",
+          "type": 9
+        },
+        {
+          "id": "16:3419362001036057783",
+          "name": "fileAs",
+          "type": 9
+        },
+        {
+          "id": "17:4926011915686603574",
+          "name": "department",
+          "type": 9
+        },
+        {
+          "id": "18:6953689109759532550",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "19:1621145229406005258",
+          "name": "addressLabel",
+          "type": 9
+        },
+        {
+          "id": "20:6093819325982730850",
+          "name": "address",
+          "type": 9
+        },
+        {
+          "id": "21:9190658576462444916",
+          "name": "website",
+          "type": 9
+        },
+        {
+          "id": "22:4378165014098630030",
+          "name": "relatedPerson",
+          "type": 9
+        },
+        {
+          "id": "23:610351457363492498",
+          "name": "relationshipToRelatedPerson",
+          "type": 9
+        },
+        {
+          "id": "24:112065230061054401",
+          "name": "sip",
+          "type": 9
+        },
+        {
+          "id": "25:8243155685330433823",
+          "name": "namePrefix",
+          "type": 9
+        },
+        {
+          "id": "26:3601834147954027260",
+          "name": "middleName",
+          "type": 9
+        },
+        {
+          "id": "27:7200074132348787700",
+          "name": "nameSuffix",
+          "type": 9
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:727370358604762605",
+  "lastEntityId": "2:908501058828566114",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
   "modelVersionParserMinimum": 5,
-  "retiredEntityUids": [],
+  "retiredEntityUids": [
+    727370358604762605
+  ],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    7960758831185025340,
+    6809843709899125537,
+    2627841558101593035,
+    8816784739354290318
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

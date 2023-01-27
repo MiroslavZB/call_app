@@ -1,4 +1,4 @@
-import 'package:call_app/note.dart';
+import 'package:call_app/contact.dart';
 import 'package:call_app/objectbox.g.dart';
 
 /// Provides access to the ObjectBox Store throughout the app.
@@ -7,15 +7,12 @@ class ObjectBox {
   late final Store store;
 
   /// A Box of notes.
-  late final Box<Note> noteBox;
+  late final Box<Contact> contactsBox;
 
   ObjectBox._create(this.store) {
-    noteBox = Box<Note>(store);
+    contactsBox = Box<Contact>(store);
 
-    // Add some demo data if the box is empty.
-    if (noteBox.isEmpty()) {
-      _putDemoData();
-    }
+    //  _putDemoData();
   }
 
   /// Create an instance of ObjectBox to use throughout the app.
@@ -24,19 +21,19 @@ class ObjectBox {
     return ObjectBox._create(store);
   }
 
-  void _putDemoData() {
-    final demoNotes = [
-      Note('Quickly add a note by writing text and pressing Enter'),
-      Note('Delete notes by tapping on one'),
-      Note('Write a demo app for ObjectBox')
-    ];
-    store.runInTransactionAsync(TxMode.write, _putNotesInTx, demoNotes);
-  }
+  // void _putDemoData() {
+  //   final demoNotes = [
+  //     Contact('Quickly add a note by writing text and pressing Enter'),
+  //     Contact('Delete notes by tapping on one'),
+  //     Contact('Write a demo app for ObjectBox')
+  //   ];
+  //   store.runInTransactionAsync(TxMode.write, _putNotesInTx, demoNotes);
+  // }
 
-  Stream<List<Note>> getNotes() {
+  Stream<List<Contact>> getContacts() {
     // Query for all notes, sorted by their date.
     // https://docs.objectbox.io/queries
-    final builder = noteBox.query().order(Note_.date, flags: Order.descending);
+    final builder = contactsBox.query().order(Contact_.date, flags: Order.descending);
     // Build and watch the query,
     // set triggerImmediately to emit the query immediately on listen.
     return builder
@@ -45,7 +42,7 @@ class ObjectBox {
         .map((query) => query.find());
   }
 
-  static void _putNotesInTx(Store store, List<Note> notes) => store.box<Note>().putMany(notes);
+  static void _putContactsInTx(Store store, List<Contact> contacts) => store.box<Contact>().putMany(contacts);
 
   /// Add a note within a transaction.
   ///
@@ -54,14 +51,14 @@ class ObjectBox {
   /// own Store instance.
   /// For this example only a single object is put which would also be fine if
   /// done here directly.
-  Future<void> addNote(String text) => store.runInTransactionAsync(TxMode.write, _addNoteInTx, text);
+  Future<void> addContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
 
   /// Note: due to [dart-lang/sdk#36983](https://github.com/dart-lang/sdk/issues/36983)
   /// not using a closure as it may capture more objects than expected.
   /// These might not be send-able to an isolate. See Store.runAsync for details.
-  static void _addNoteInTx(Store store, String text) {
+  static void _addContactInTx(Store store, Contact contact) {
     // Perform ObjectBox operations that take longer than a few milliseconds
     // here. To keep it simple, this example just puts a single object.
-    store.box<Note>().put(Note(text));
+    store.box<Contact>().put(contact);
   }
 }

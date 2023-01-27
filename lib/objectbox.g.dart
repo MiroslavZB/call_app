@@ -14,36 +14,151 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
-import 'note.dart';
+import 'contact.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 final _entities = <ModelEntity>[
   ModelEntity(
-      id: const IdUid(1, 727370358604762605),
-      name: 'Note',
-      lastPropertyId: const IdUid(4, 8816784739354290318),
+      id: const IdUid(2, 908501058828566114),
+      name: 'Contact',
+      lastPropertyId: const IdUid(27, 7200074132348787700),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
-            id: const IdUid(1, 7960758831185025340),
+            id: const IdUid(1, 6554116169441388952),
             name: 'id',
             type: 6,
             flags: 1),
         ModelProperty(
-            id: const IdUid(2, 6809843709899125537),
-            name: 'text',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(3, 2627841558101593035),
-            name: 'comment',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(4, 8816784739354290318),
+            id: const IdUid(2, 3571340550331656589),
             name: 'date',
             type: 10,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 9174826443931334619),
+            name: 'firstName',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 7239815409867055114),
+            name: 'phone',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 1791579712902758417),
+            name: 'photo',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(6, 8916332417915906448),
+            name: 'lastName',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(7, 5285576211315750249),
+            name: 'company',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(8, 3235901402730081087),
+            name: 'email',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(9, 7631752878074362172),
+            name: 'label',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(10, 2675998410417279425),
+            name: 'significantDate',
+            type: 10,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(11, 4241096606666077152),
+            name: 'significantDateLabel',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(12, 6203722158275323781),
+            name: 'phoneticLastName',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(13, 1220260734375487121),
+            name: 'phoneticMiddleName',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(14, 8802724971380217074),
+            name: 'phoneticFirstName',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(15, 4335707583650367225),
+            name: 'nickname',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(16, 3419362001036057783),
+            name: 'fileAs',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(17, 4926011915686603574),
+            name: 'department',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(18, 6953689109759532550),
+            name: 'title',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(19, 1621145229406005258),
+            name: 'addressLabel',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(20, 6093819325982730850),
+            name: 'address',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(21, 9190658576462444916),
+            name: 'website',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(22, 4378165014098630030),
+            name: 'relatedPerson',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(23, 610351457363492498),
+            name: 'relationshipToRelatedPerson',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(24, 112065230061054401),
+            name: 'sip',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(25, 8243155685330433823),
+            name: 'namePrefix',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(26, 3601834147954027260),
+            name: 'middleName',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(27, 7200074132348787700),
+            name: 'nameSuffix',
+            type: 9,
             flags: 0)
       ],
       relations: <ModelRelation>[],
@@ -70,51 +185,164 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 727370358604762605),
+      lastEntityId: const IdUid(2, 908501058828566114),
       lastIndexId: const IdUid(0, 0),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
-      retiredEntityUids: const [],
+      retiredEntityUids: const [727370358604762605],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [
+        7960758831185025340,
+        6809843709899125537,
+        2627841558101593035,
+        8816784739354290318
+      ],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
 
   final bindings = <Type, EntityDefinition>{
-    Note: EntityDefinition<Note>(
+    Contact: EntityDefinition<Contact>(
         model: _entities[0],
-        toOneRelations: (Note object) => [],
-        toManyRelations: (Note object) => {},
-        getId: (Note object) => object.id,
-        setId: (Note object, int id) {
+        toOneRelations: (Contact object) => [],
+        toManyRelations: (Contact object) => {},
+        getId: (Contact object) => object.id,
+        setId: (Contact object, int id) {
           object.id = id;
         },
-        objectToFB: (Note object, fb.Builder fbb) {
-          final textOffset = fbb.writeString(object.text);
-          final commentOffset =
-              object.comment == null ? null : fbb.writeString(object.comment!);
-          fbb.startTable(5);
+        objectToFB: (Contact object, fb.Builder fbb) {
+          final firstNameOffset = fbb.writeString(object.firstName);
+          final phoneOffset = fbb.writeString(object.phone);
+          final photoOffset = fbb.writeString(object.photo);
+          final lastNameOffset = object.lastName == null
+              ? null
+              : fbb.writeString(object.lastName!);
+          final companyOffset =
+              object.company == null ? null : fbb.writeString(object.company!);
+          final emailOffset =
+              object.email == null ? null : fbb.writeString(object.email!);
+          final labelOffset =
+              object.label == null ? null : fbb.writeString(object.label!);
+          final significantDateLabelOffset = object.significantDateLabel == null
+              ? null
+              : fbb.writeString(object.significantDateLabel!);
+          final phoneticLastNameOffset = object.phoneticLastName == null
+              ? null
+              : fbb.writeString(object.phoneticLastName!);
+          final phoneticMiddleNameOffset = object.phoneticMiddleName == null
+              ? null
+              : fbb.writeString(object.phoneticMiddleName!);
+          final phoneticFirstNameOffset = object.phoneticFirstName == null
+              ? null
+              : fbb.writeString(object.phoneticFirstName!);
+          final nicknameOffset = object.nickname == null
+              ? null
+              : fbb.writeString(object.nickname!);
+          final fileAsOffset =
+              object.fileAs == null ? null : fbb.writeString(object.fileAs!);
+          final departmentOffset = object.department == null
+              ? null
+              : fbb.writeString(object.department!);
+          final titleOffset =
+              object.title == null ? null : fbb.writeString(object.title!);
+          final addressLabelOffset = object.addressLabel == null
+              ? null
+              : fbb.writeString(object.addressLabel!);
+          final addressOffset =
+              object.address == null ? null : fbb.writeString(object.address!);
+          final websiteOffset =
+              object.website == null ? null : fbb.writeString(object.website!);
+          final relatedPersonOffset = object.relatedPerson == null
+              ? null
+              : fbb.writeString(object.relatedPerson!);
+          final relationshipToRelatedPersonOffset =
+              object.relationshipToRelatedPerson == null
+                  ? null
+                  : fbb.writeString(object.relationshipToRelatedPerson!);
+          final sipOffset =
+              object.sip == null ? null : fbb.writeString(object.sip!);
+          final namePrefixOffset = object.namePrefix == null
+              ? null
+              : fbb.writeString(object.namePrefix!);
+          final middleNameOffset = object.middleName == null
+              ? null
+              : fbb.writeString(object.middleName!);
+          final nameSuffixOffset = object.nameSuffix == null
+              ? null
+              : fbb.writeString(object.nameSuffix!);
+          fbb.startTable(28);
           fbb.addInt64(0, object.id);
-          fbb.addOffset(1, textOffset);
-          fbb.addOffset(2, commentOffset);
-          fbb.addInt64(3, object.date.millisecondsSinceEpoch);
+          fbb.addInt64(1, object.date.millisecondsSinceEpoch);
+          fbb.addOffset(2, firstNameOffset);
+          fbb.addOffset(3, phoneOffset);
+          fbb.addOffset(4, photoOffset);
+          fbb.addOffset(5, lastNameOffset);
+          fbb.addOffset(6, companyOffset);
+          fbb.addOffset(7, emailOffset);
+          fbb.addOffset(8, labelOffset);
+          fbb.addInt64(9, object.significantDate?.millisecondsSinceEpoch);
+          fbb.addOffset(10, significantDateLabelOffset);
+          fbb.addOffset(11, phoneticLastNameOffset);
+          fbb.addOffset(12, phoneticMiddleNameOffset);
+          fbb.addOffset(13, phoneticFirstNameOffset);
+          fbb.addOffset(14, nicknameOffset);
+          fbb.addOffset(15, fileAsOffset);
+          fbb.addOffset(16, departmentOffset);
+          fbb.addOffset(17, titleOffset);
+          fbb.addOffset(18, addressLabelOffset);
+          fbb.addOffset(19, addressOffset);
+          fbb.addOffset(20, websiteOffset);
+          fbb.addOffset(21, relatedPersonOffset);
+          fbb.addOffset(22, relationshipToRelatedPersonOffset);
+          fbb.addOffset(23, sipOffset);
+          fbb.addOffset(24, namePrefixOffset);
+          fbb.addOffset(25, middleNameOffset);
+          fbb.addOffset(26, nameSuffixOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
         objectFromFB: (Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
-
-          final object = Note(
-              const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 6, ''),
+          final significantDateValue =
+              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 22);
+          final object = Contact(
               id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
-              comment: const fb.StringReader(asciiOptimization: true)
-                  .vTableGetNullable(buffer, rootOffset, 8),
-              date: DateTime.fromMillisecondsSinceEpoch(
-                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0)));
+              firstName: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''),
+              phone: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 10, ''),
+              photo: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 12, ''),
+              lastName: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 14),
+              company: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 16),
+              email: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 18),
+              label: const fb.StringReader(asciiOptimization: true)
+                  .vTableGetNullable(buffer, rootOffset, 20),
+              significantDate:
+                  significantDateValue == null ? null : DateTime.fromMillisecondsSinceEpoch(significantDateValue),
+              significantDateLabel: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 24),
+              namePrefix: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 52),
+              middleName: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 54),
+              nameSuffix: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 56),
+              phoneticLastName: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 26),
+              phoneticMiddleName: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 28),
+              phoneticFirstName: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 30),
+              nickname: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 32),
+              fileAs: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 34),
+              department: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 36),
+              title: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 38),
+              addressLabel: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 40),
+              address: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 42),
+              website: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 44),
+              relatedPerson: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 46),
+              relationshipToRelatedPerson: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 48),
+              sip: const fb.StringReader(asciiOptimization: true).vTableGetNullable(buffer, rootOffset, 50),
+              date: DateTime.fromMillisecondsSinceEpoch(const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0)));
 
           return object;
         })
@@ -123,17 +351,106 @@ ModelDefinition getObjectBoxModel() {
   return ModelDefinition(model, bindings);
 }
 
-/// [Note] entity fields to define ObjectBox queries.
-class Note_ {
-  /// see [Note.id]
-  static final id = QueryIntegerProperty<Note>(_entities[0].properties[0]);
+/// [Contact] entity fields to define ObjectBox queries.
+class Contact_ {
+  /// see [Contact.id]
+  static final id = QueryIntegerProperty<Contact>(_entities[0].properties[0]);
 
-  /// see [Note.text]
-  static final text = QueryStringProperty<Note>(_entities[0].properties[1]);
+  /// see [Contact.date]
+  static final date = QueryIntegerProperty<Contact>(_entities[0].properties[1]);
 
-  /// see [Note.comment]
-  static final comment = QueryStringProperty<Note>(_entities[0].properties[2]);
+  /// see [Contact.firstName]
+  static final firstName =
+      QueryStringProperty<Contact>(_entities[0].properties[2]);
 
-  /// see [Note.date]
-  static final date = QueryIntegerProperty<Note>(_entities[0].properties[3]);
+  /// see [Contact.phone]
+  static final phone = QueryStringProperty<Contact>(_entities[0].properties[3]);
+
+  /// see [Contact.photo]
+  static final photo = QueryStringProperty<Contact>(_entities[0].properties[4]);
+
+  /// see [Contact.lastName]
+  static final lastName =
+      QueryStringProperty<Contact>(_entities[0].properties[5]);
+
+  /// see [Contact.company]
+  static final company =
+      QueryStringProperty<Contact>(_entities[0].properties[6]);
+
+  /// see [Contact.email]
+  static final email = QueryStringProperty<Contact>(_entities[0].properties[7]);
+
+  /// see [Contact.label]
+  static final label = QueryStringProperty<Contact>(_entities[0].properties[8]);
+
+  /// see [Contact.significantDate]
+  static final significantDate =
+      QueryIntegerProperty<Contact>(_entities[0].properties[9]);
+
+  /// see [Contact.significantDateLabel]
+  static final significantDateLabel =
+      QueryStringProperty<Contact>(_entities[0].properties[10]);
+
+  /// see [Contact.phoneticLastName]
+  static final phoneticLastName =
+      QueryStringProperty<Contact>(_entities[0].properties[11]);
+
+  /// see [Contact.phoneticMiddleName]
+  static final phoneticMiddleName =
+      QueryStringProperty<Contact>(_entities[0].properties[12]);
+
+  /// see [Contact.phoneticFirstName]
+  static final phoneticFirstName =
+      QueryStringProperty<Contact>(_entities[0].properties[13]);
+
+  /// see [Contact.nickname]
+  static final nickname =
+      QueryStringProperty<Contact>(_entities[0].properties[14]);
+
+  /// see [Contact.fileAs]
+  static final fileAs =
+      QueryStringProperty<Contact>(_entities[0].properties[15]);
+
+  /// see [Contact.department]
+  static final department =
+      QueryStringProperty<Contact>(_entities[0].properties[16]);
+
+  /// see [Contact.title]
+  static final title =
+      QueryStringProperty<Contact>(_entities[0].properties[17]);
+
+  /// see [Contact.addressLabel]
+  static final addressLabel =
+      QueryStringProperty<Contact>(_entities[0].properties[18]);
+
+  /// see [Contact.address]
+  static final address =
+      QueryStringProperty<Contact>(_entities[0].properties[19]);
+
+  /// see [Contact.website]
+  static final website =
+      QueryStringProperty<Contact>(_entities[0].properties[20]);
+
+  /// see [Contact.relatedPerson]
+  static final relatedPerson =
+      QueryStringProperty<Contact>(_entities[0].properties[21]);
+
+  /// see [Contact.relationshipToRelatedPerson]
+  static final relationshipToRelatedPerson =
+      QueryStringProperty<Contact>(_entities[0].properties[22]);
+
+  /// see [Contact.sip]
+  static final sip = QueryStringProperty<Contact>(_entities[0].properties[23]);
+
+  /// see [Contact.namePrefix]
+  static final namePrefix =
+      QueryStringProperty<Contact>(_entities[0].properties[24]);
+
+  /// see [Contact.middleName]
+  static final middleName =
+      QueryStringProperty<Contact>(_entities[0].properties[25]);
+
+  /// see [Contact.nameSuffix]
+  static final nameSuffix =
+      QueryStringProperty<Contact>(_entities[0].properties[26]);
 }
