@@ -1,7 +1,15 @@
 import 'package:call_app/home_page.dart';
+import 'package:call_app/objectbox.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+late ObjectBox objectbox;
+
+void main() async {
+  // This is required so ObjectBox can get the application directory
+  // to store the database in.
+  WidgetsFlutterBinding.ensureInitialized();
+
+  objectbox = await ObjectBox.create();
   runApp(const MyApp());
 }
 
