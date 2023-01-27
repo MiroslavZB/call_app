@@ -8,7 +8,6 @@ class Note {
   String text;
   String? comment;
 
-  /// Note: Stored in milliseconds without time zone info.
   DateTime date;
 
   Note(this.text, {this.id = 0, this.comment, DateTime? date}) : date = date ?? DateTime.now();

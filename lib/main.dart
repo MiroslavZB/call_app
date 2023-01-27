@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 late ObjectBox objectbox;
 
 void main() async {
-  // This is required so ObjectBox can get the application directory
-  // to store the database in.
+  // This is required so ObjectBox can get the application directory to store the database in.
   WidgetsFlutterBinding.ensureInitialized();
 
   objectbox = await ObjectBox.create();
@@ -16,7 +15,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
