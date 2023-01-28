@@ -74,11 +74,7 @@ class _RootPageState extends State<RootPage> {
           children: const [
             Icon(Icons.search),
             Expanded(
-              child: TextField(
-                decoration: InputDecoration.collapsed(
-                  hintText: 'Search contacts & places',
-                ),
-              ),
+              child: Text('Search contacts & places'),
             ),
             Icon(Icons.keyboard_voice_outlined),
             Icon(Icons.more_vert_outlined)
