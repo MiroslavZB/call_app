@@ -1,5 +1,5 @@
-import 'package:call_app/home_page.dart';
-import 'package:call_app/objectbox.dart';
+import 'package:call_app/pages/home_page.dart';
+import 'package:call_app/services/database/objectbox.dart';
 import 'package:flutter/material.dart';
 
 late ObjectBox objectbox;

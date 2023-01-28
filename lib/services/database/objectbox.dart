@@ -1,4 +1,4 @@
-import 'package:call_app/contact.dart';
+import 'package:call_app/models/contact.dart';
 import 'package:call_app/objectbox.g.dart';
 
 /// Provides access to the ObjectBox Store throughout the app.
