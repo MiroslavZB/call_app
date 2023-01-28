@@ -1,3 +1,4 @@
+import 'package:call_app/pages/new_contact_page.dart';
 import 'package:call_app/pages/root.dart';
 import 'package:call_app/pages/contacts_page.dart';
 import 'package:call_app/pages/favorites_page.dart';
@@ -65,6 +66,15 @@ final _router = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: Paths.newContact,
+      pageBuilder: (context, state) {
+        return const NoTransitionPage(
+          child: NewContactPage()
+        );
+      },
     ),
   ],
 );
