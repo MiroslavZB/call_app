@@ -11,10 +11,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: const [
-            Text('favorites')
+            Text('favorites'),
           ],
         ),
       ),

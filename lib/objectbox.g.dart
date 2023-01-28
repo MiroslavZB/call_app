@@ -22,7 +22,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(2, 908501058828566114),
       name: 'Contact',
-      lastPropertyId: const IdUid(27, 7200074132348787700),
+      lastPropertyId: const IdUid(28, 8798413419112120226),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -43,11 +43,6 @@ final _entities = <ModelEntity>[
         ModelProperty(
             id: const IdUid(4, 7239815409867055114),
             name: 'phone',
-            type: 9,
-            flags: 0),
-        ModelProperty(
-            id: const IdUid(5, 1791579712902758417),
-            name: 'photo',
             type: 9,
             flags: 0),
         ModelProperty(
@@ -159,6 +154,11 @@ final _entities = <ModelEntity>[
             id: const IdUid(27, 7200074132348787700),
             name: 'nameSuffix',
             type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(28, 8798413419112120226),
+            name: 'image',
+            type: 9,
             flags: 0)
       ],
       relations: <ModelRelation>[],
@@ -195,7 +195,8 @@ ModelDefinition getObjectBoxModel() {
         7960758831185025340,
         6809843709899125537,
         2627841558101593035,
-        8816784739354290318
+        8816784739354290318,
+        1791579712902758417
       ],
       retiredRelationUids: const [],
       modelVersion: 5,
@@ -214,7 +215,6 @@ ModelDefinition getObjectBoxModel() {
         objectToFB: (Contact object, fb.Builder fbb) {
           final firstNameOffset = fbb.writeString(object.firstName);
           final phoneOffset = fbb.writeString(object.phone);
-          final photoOffset = fbb.writeString(object.photo);
           final lastNameOffset = object.lastName == null
               ? null
               : fbb.writeString(object.lastName!);
@@ -271,12 +271,12 @@ ModelDefinition getObjectBoxModel() {
           final nameSuffixOffset = object.nameSuffix == null
               ? null
               : fbb.writeString(object.nameSuffix!);
-          fbb.startTable(28);
+          final imageOffset = fbb.writeString(object.image);
+          fbb.startTable(29);
           fbb.addInt64(0, object.id);
           fbb.addInt64(1, object.date.millisecondsSinceEpoch);
           fbb.addOffset(2, firstNameOffset);
           fbb.addOffset(3, phoneOffset);
-          fbb.addOffset(4, photoOffset);
           fbb.addOffset(5, lastNameOffset);
           fbb.addOffset(6, companyOffset);
           fbb.addOffset(7, emailOffset);
@@ -299,6 +299,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.addOffset(24, namePrefixOffset);
           fbb.addOffset(25, middleNameOffset);
           fbb.addOffset(26, nameSuffixOffset);
+          fbb.addOffset(27, imageOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -313,8 +314,8 @@ ModelDefinition getObjectBoxModel() {
                   .vTableGet(buffer, rootOffset, 8, ''),
               phone: const fb.StringReader(asciiOptimization: true)
                   .vTableGet(buffer, rootOffset, 10, ''),
-              photo: const fb.StringReader(asciiOptimization: true)
-                  .vTableGet(buffer, rootOffset, 12, ''),
+              image: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 58, ''),
               lastName: const fb.StringReader(asciiOptimization: true)
                   .vTableGetNullable(buffer, rootOffset, 14),
               company: const fb.StringReader(asciiOptimization: true)
@@ -366,91 +367,92 @@ class Contact_ {
   /// see [Contact.phone]
   static final phone = QueryStringProperty<Contact>(_entities[0].properties[3]);
 
-  /// see [Contact.photo]
-  static final photo = QueryStringProperty<Contact>(_entities[0].properties[4]);
-
   /// see [Contact.lastName]
   static final lastName =
-      QueryStringProperty<Contact>(_entities[0].properties[5]);
+      QueryStringProperty<Contact>(_entities[0].properties[4]);
 
   /// see [Contact.company]
   static final company =
-      QueryStringProperty<Contact>(_entities[0].properties[6]);
+      QueryStringProperty<Contact>(_entities[0].properties[5]);
 
   /// see [Contact.email]
-  static final email = QueryStringProperty<Contact>(_entities[0].properties[7]);
+  static final email = QueryStringProperty<Contact>(_entities[0].properties[6]);
 
   /// see [Contact.label]
-  static final label = QueryStringProperty<Contact>(_entities[0].properties[8]);
+  static final label = QueryStringProperty<Contact>(_entities[0].properties[7]);
 
   /// see [Contact.significantDate]
   static final significantDate =
-      QueryIntegerProperty<Contact>(_entities[0].properties[9]);
+      QueryIntegerProperty<Contact>(_entities[0].properties[8]);
 
   /// see [Contact.significantDateLabel]
   static final significantDateLabel =
-      QueryStringProperty<Contact>(_entities[0].properties[10]);
+      QueryStringProperty<Contact>(_entities[0].properties[9]);
 
   /// see [Contact.phoneticLastName]
   static final phoneticLastName =
-      QueryStringProperty<Contact>(_entities[0].properties[11]);
+      QueryStringProperty<Contact>(_entities[0].properties[10]);
 
   /// see [Contact.phoneticMiddleName]
   static final phoneticMiddleName =
-      QueryStringProperty<Contact>(_entities[0].properties[12]);
+      QueryStringProperty<Contact>(_entities[0].properties[11]);
 
   /// see [Contact.phoneticFirstName]
   static final phoneticFirstName =
-      QueryStringProperty<Contact>(_entities[0].properties[13]);
+      QueryStringProperty<Contact>(_entities[0].properties[12]);
 
   /// see [Contact.nickname]
   static final nickname =
-      QueryStringProperty<Contact>(_entities[0].properties[14]);
+      QueryStringProperty<Contact>(_entities[0].properties[13]);
 
   /// see [Contact.fileAs]
   static final fileAs =
-      QueryStringProperty<Contact>(_entities[0].properties[15]);
+      QueryStringProperty<Contact>(_entities[0].properties[14]);
 
   /// see [Contact.department]
   static final department =
-      QueryStringProperty<Contact>(_entities[0].properties[16]);
+      QueryStringProperty<Contact>(_entities[0].properties[15]);
 
   /// see [Contact.title]
   static final title =
-      QueryStringProperty<Contact>(_entities[0].properties[17]);
+      QueryStringProperty<Contact>(_entities[0].properties[16]);
 
   /// see [Contact.addressLabel]
   static final addressLabel =
-      QueryStringProperty<Contact>(_entities[0].properties[18]);
+      QueryStringProperty<Contact>(_entities[0].properties[17]);
 
   /// see [Contact.address]
   static final address =
-      QueryStringProperty<Contact>(_entities[0].properties[19]);
+      QueryStringProperty<Contact>(_entities[0].properties[18]);
 
   /// see [Contact.website]
   static final website =
-      QueryStringProperty<Contact>(_entities[0].properties[20]);
+      QueryStringProperty<Contact>(_entities[0].properties[19]);
 
   /// see [Contact.relatedPerson]
   static final relatedPerson =
-      QueryStringProperty<Contact>(_entities[0].properties[21]);
+      QueryStringProperty<Contact>(_entities[0].properties[20]);
 
   /// see [Contact.relationshipToRelatedPerson]
   static final relationshipToRelatedPerson =
-      QueryStringProperty<Contact>(_entities[0].properties[22]);
+      QueryStringProperty<Contact>(_entities[0].properties[21]);
 
   /// see [Contact.sip]
-  static final sip = QueryStringProperty<Contact>(_entities[0].properties[23]);
+  static final sip = QueryStringProperty<Contact>(_entities[0].properties[22]);
 
   /// see [Contact.namePrefix]
   static final namePrefix =
-      QueryStringProperty<Contact>(_entities[0].properties[24]);
+      QueryStringProperty<Contact>(_entities[0].properties[23]);
 
   /// see [Contact.middleName]
   static final middleName =
-      QueryStringProperty<Contact>(_entities[0].properties[25]);
+      QueryStringProperty<Contact>(_entities[0].properties[24]);
 
   /// see [Contact.nameSuffix]
   static final nameSuffix =
+      QueryStringProperty<Contact>(_entities[0].properties[25]);
+
+  /// see [Contact.image]
+  static final image =
       QueryStringProperty<Contact>(_entities[0].properties[26]);
 }
