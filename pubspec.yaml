@@ -9,11 +9,16 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
-  objectbox: ^1.7.1
-  objectbox_flutter_libs: any
+  # Database
   intl: ^0.18.0
+  objectbox: ^1.7.1
   flat_buffers: ^2.0.5
+  objectbox_flutter_libs: any
+
+  # Router
+  go_router: ^6.0.1
+
+  cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
