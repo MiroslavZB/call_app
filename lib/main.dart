@@ -94,3 +94,16 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/// Used to ensure context is still active before displaying the messenger.
+extension BuildContextMounted on BuildContext {
+  bool get mounted {
+    try {
+      (this as Element).widget;
+      return true;
+      // Widget get widget => _widget! inside Element will throw if it's not mounted anymore
+    } on TypeError catch (_) {
+      return false;
+    }
+  }
+}
