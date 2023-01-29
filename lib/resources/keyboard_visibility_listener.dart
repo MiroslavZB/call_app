@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 class KeyboardVisibilityListener extends StatefulWidget {
   final Widget child;
   final void Function(
-      bool isKeyboardVisible,
-      ) listener;
+    bool isKeyboardVisible,
+  ) listener;
 
   const KeyboardVisibilityListener({
     Key? key,

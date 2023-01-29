@@ -343,34 +343,34 @@ class _NewContactPageState extends State<NewContactPage> {
   }
 
   // Makes a Contact object out of the current text fields
-  Contact currentContact ({int id = 0}) => Contact(
-    id: id,
-    firstName: fields['First name']?.text ?? '',
-    phone: fields['Phone']?.text ?? '',
-    image: null, // TODO
-    lastName: fields['Last name']?.text,
-    company: fields['Company']?.text,
-    email: fields['Email']?.text,
-    label: fields['label']?.text,
-    significantDate: null, // TODO
-    significantDateLabel: null, // TODO
-    namePrefix: fields['Name prefix']?.text,
-    middleName: fields['Middle name']?.text,
-    nameSuffix: fields['Name suffix']?.text,
-    phoneticLastName: fields['Phonetic last name']?.text,
-    phoneticMiddleName: fields['Phonetic middle name']?.text,
-    phoneticFirstName: fields['Phonetic first name']?.text,
-    nickname: fields['Nickname']?.text,
-    fileAs: fields['File as']?.text,
-    department: fields['Department']?.text,
-    title: fields['Title']?.text,
-    addressLabel: null, // TODO
-    address: fields['Address']?.text,
-    website: fields['Website']?.text,
-    relatedPerson: fields['Relationship']?.text,
-    relationshipToRelatedPerson: null, // TODO
-    sip: fields['sip']?.text,
-  );
+  Contact currentContact({int id = 0}) => Contact(
+        id: id,
+        firstName: fields['First name']?.text ?? '',
+        phone: fields['Phone']?.text ?? '',
+        image: null, // TODO
+        lastName: fields['Last name']?.text,
+        company: fields['Company']?.text,
+        email: fields['Email']?.text,
+        label: fields['label']?.text,
+        significantDate: null, // TODO
+        significantDateLabel: null, // TODO
+        namePrefix: fields['Name prefix']?.text,
+        middleName: fields['Middle name']?.text,
+        nameSuffix: fields['Name suffix']?.text,
+        phoneticLastName: fields['Phonetic last name']?.text,
+        phoneticMiddleName: fields['Phonetic middle name']?.text,
+        phoneticFirstName: fields['Phonetic first name']?.text,
+        nickname: fields['Nickname']?.text,
+        fileAs: fields['File as']?.text,
+        department: fields['Department']?.text,
+        title: fields['Title']?.text,
+        addressLabel: null, // TODO
+        address: fields['Address']?.text,
+        website: fields['Website']?.text,
+        relatedPerson: fields['Relationship']?.text,
+        relationshipToRelatedPerson: null, // TODO
+        sip: fields['sip']?.text,
+      );
 
   // Functions
   Future<void> createContact() async {
