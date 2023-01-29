@@ -34,6 +34,7 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       bottomNavigationBar: sharedBottomBar(),
       body: SafeArea(
