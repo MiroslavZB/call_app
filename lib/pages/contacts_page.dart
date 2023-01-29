@@ -92,6 +92,7 @@ class _ContactsPageState extends State<ContactsPage> {
   Widget contactWidget({required Contact contact, required String thisInitial, required String previousInitial}) {
     return GestureDetector(
       onTap: () => context.go(Paths.contactInfo, extra: contact),
+      onLongPress: () => objectbox.contactsBox.remove(contact.id),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -119,7 +120,7 @@ class _ContactsPageState extends State<ContactsPage> {
               ),
             ),
             Text(
-              contact.firstName + (contact.middleName ?? '') + (contact.lastName ?? ''),
+              '${contact.firstName} ${contact.lastName ?? ''}',
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 fontSize: sizeH4,
