@@ -154,7 +154,7 @@
     },
     {
       "id": "3:5312442694515206892",
-      "lastPropertyId": "4:4644031084947768628",
+      "lastPropertyId": "5:1988371287127510160",
       "name": "RecentContact",
       "properties": [
         {
@@ -180,6 +180,11 @@
           "id": "4:4644031084947768628",
           "name": "status",
           "type": 6
+        },
+        {
+          "id": "5:1988371287127510160",
+          "name": "phone",
+          "type": 9
         }
       ],
       "relations": []

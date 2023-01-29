@@ -32,22 +32,27 @@ Widget contactImage({
     );
   }
   return Container(
-    padding: const EdgeInsets.all(10),
     height: size,
     width: size,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
-      color: fillColor,
+      color: firstName == '' ? Colors.grey : fillColor,
     ),
     child: Center(
-      child: Text(
-        firstName.substring(0, 1).toUpperCase(),
-        style: const TextStyle(
-          fontSize: sizeH1,
-          fontWeight: FontWeight.w500,
-          color: Colors.white,
-        ),
-      ),
+      child: firstName == ''
+          ? Icon(
+              Icons.account_circle_rounded,
+              color: Colors.grey[50],
+              size: extraBigIconSize,
+            )
+          : Text(
+              firstName.substring(0, 1).toUpperCase(),
+              style: const TextStyle(
+                fontSize: sizeH1,
+                fontWeight: FontWeight.w500,
+                color: Colors.white,
+              ),
+            ),
     ),
   );
 }

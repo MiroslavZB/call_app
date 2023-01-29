@@ -125,7 +125,8 @@ class ContactInfoPage extends StatelessWidget {
               icon: Icons.call_outlined,
               text: 'Call',
               onPressed: () async {
-                await objectbox.addRecent(contact: contact, occurrence: DateTime.now(), state: 1);
+                await objectbox.addRecent(
+                    contact: contact, phone: contact.phone, occurrence: DateTime.now(), state: 1);
               }),
           iconButtonWidget(
               icon: Icons.message_outlined,

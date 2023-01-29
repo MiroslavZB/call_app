@@ -33,10 +33,11 @@ class _RecentsPageState extends State<RecentsPage> {
                     itemBuilder: (context, index) {
                       final List<RecentContact> recents = snapshot.data ?? [];
                       return recentsWidget(
-                        contact: recents[index].contact.target!,
+                        contact: recents[index].contact.target,
                         occurrence: recents[index].occurrenceDate,
                         id: recents[index].id,
                         flag: recents[index].status,
+                        phone: recents[index].phone,
                       );
                     },
                   );
@@ -48,8 +49,9 @@ class _RecentsPageState extends State<RecentsPage> {
   }
 
   Widget recentsWidget({
-    required Contact contact,
+    required Contact? contact,
     required DateTime occurrence,
+    required String phone,
     required int flag,
     required int id,
   }) {
@@ -61,7 +63,7 @@ class _RecentsPageState extends State<RecentsPage> {
             onPressed: () {
               context.go(Paths.contactInfo, extra: contact);
             },
-            child: contactImage(firstName: contact.firstName),
+            child: contactImage(firstName: contact == null ? '' : contact.firstName),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 20, left: 10),
@@ -73,7 +75,7 @@ class _RecentsPageState extends State<RecentsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    '${contact.firstName} ${contact.lastName ?? ''}',
+                    contact == null ? phone : '${contact.firstName} ${contact.lastName ?? ''}',
                     style: const TextStyle(
                       fontSize: sizeH3,
                     ),
@@ -100,7 +102,7 @@ class _RecentsPageState extends State<RecentsPage> {
           Expanded(child: Container()),
           IconButton(
             onPressed: () async {
-              await objectbox.addRecent(contact: contact, occurrence: DateTime.now(), state: 1);
+              await objectbox.addRecent(contact: contact, phone: phone, occurrence: DateTime.now(), state: 1);
             },
             icon: const Icon(
               Icons.call_outlined,

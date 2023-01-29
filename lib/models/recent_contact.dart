@@ -6,6 +6,7 @@ import 'package:objectbox/objectbox.dart';
 class RecentContact {
   int id;
   final contact = ToOne<Contact>();
+  final String phone;
   final DateTime occurrenceDate;
 
   // 0 - missed, 1 - outgoing, 2 - incoming
@@ -13,6 +14,7 @@ class RecentContact {
 
   RecentContact({
     this.id = 0,
+    required this.phone,
     required this.status,
     required this.occurrenceDate,
   });

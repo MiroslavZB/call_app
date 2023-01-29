@@ -71,14 +71,17 @@ class ObjectBox {
   }
 
   Future<void> addRecent({
-    required Contact contact,
+    required Contact? contact,
     required DateTime occurrence,
+    required String phone,
     required int state,
   }) async {
     final RecentContact recentContact = RecentContact(
       status: state,
+      phone: phone,
       occurrenceDate: occurrence,
     );
+
     recentContact.contact.target = contact;
 
     store.runInTransactionAsync(TxMode.write, _addRecentContactInTx, recentContact);
