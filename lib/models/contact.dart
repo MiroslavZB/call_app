@@ -9,10 +9,10 @@ class Contact {
   // Required
   String firstName;
   String phone;
-  String image;
-  String? lastName;
 
   // Main
+  String? image;
+  String? lastName;
   String? company;
   String? email;
   String? label;
@@ -41,7 +41,7 @@ class Contact {
     this.id = 0,
     required this.firstName,
     required this.phone,
-    required this.image,
+    this.image,
     this.lastName,
     this.company,
     this.email,
