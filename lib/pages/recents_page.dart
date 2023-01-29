@@ -73,7 +73,7 @@ class _RecentsPageState extends State<RecentsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    contact.firstName + (contact.middleName ?? '') + (contact.lastName ?? ''),
+                    '${contact.firstName} ${contact.lastName ?? ''}',
                     style: const TextStyle(
                       fontSize: sizeH3,
                     ),
