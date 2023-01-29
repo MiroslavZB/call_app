@@ -1,3 +1,4 @@
+import 'package:call_app/models/contact.dart';
 import 'package:call_app/pages/new_contact_page.dart';
 import 'package:call_app/pages/root.dart';
 import 'package:call_app/pages/contacts_page.dart';
@@ -8,6 +9,8 @@ import 'package:call_app/services/database/objectbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+
+import 'pages/contact_info_page.dart';
 
 late ObjectBox objectbox;
 
@@ -71,8 +74,17 @@ final _router = GoRouter(
       parentNavigatorKey: _rootNavigatorKey,
       path: Paths.newContact,
       pageBuilder: (context, state) {
-        return const NoTransitionPage(
-          child: NewContactPage()
+        return NoTransitionPage(
+          child: NewContactPage(contact: state.extra as Contact?),
+        );
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: Paths.contactInfo,
+      pageBuilder: (context, state) {
+        return NoTransitionPage(
+          child: ContactInfoPage(contact: state.extra as Contact),
         );
       },
     ),
