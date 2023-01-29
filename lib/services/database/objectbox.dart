@@ -36,7 +36,10 @@ class ObjectBox {
   }
 
   Stream<List<RecentContact>> getRecents() {
-    final builder = recentsBox.query().order(RecentContact_.occurrenceDate, flags: Order.descending);
+    final builder = recentsBox.query().order(
+          RecentContact_.occurrenceDate,
+          flags: Order.descending,
+        );
     return builder
         .watch(triggerImmediately: true)
         // Map it to a list of notes to be used by a StreamBuilder.
@@ -60,7 +63,10 @@ class ObjectBox {
     store.box<Contact>().put(contact);
   }
 
-  static void _addRecentContactInTx(Store store, RecentContact recentContact,) {
+  static void _addRecentContactInTx(
+    Store store,
+    RecentContact recentContact,
+  ) {
     store.box<RecentContact>().put(recentContact);
   }
 
