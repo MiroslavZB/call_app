@@ -1,3 +1,4 @@
+import 'package:call_app/components/contact_image.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
@@ -8,15 +9,32 @@ import 'package:go_router/go_router.dart';
 final TextEditingController controller = TextEditingController();
 
 class NewContactPage extends StatefulWidget {
-  const NewContactPage({Key? key}) : super(key: key);
+  const NewContactPage({Key? key, this.contact}) : super(key: key);
+
+  final Contact? contact;
 
   @override
   State<NewContactPage> createState() => _NewContactPageState();
 }
 
 class _NewContactPageState extends State<NewContactPage> {
-  bool firstNameArrowDown = false;
-  bool moreFieldsState = false;
+  final Map<String, TextEditingController> fields = {};
+
+  @override
+  void initState() {
+    if (widget.contact != null) {
+      widget.contact!.toJson().forEach((key, value) {
+        if (value is String) {
+          fields.addAll({key: TextEditingController(text: value)});
+        }
+      });
+    }
+    super.initState();
+  }
+
+  bool firstNameArrowDown = false; // TODO
+  bool moreFieldsState = false; // TODO
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,137 +45,20 @@ class _NewContactPageState extends State<NewContactPage> {
           children: [
             topRow(),
             Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    addPictureImageButton(),
-                    addPictureTextButton(),
-                    ...allFields(),
-                    moreFieldsButton(),
-                  ],
+              child: Padding(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ...addImageWidgets(widget.contact == null || widget.contact!.image == null),
+                      ...allFields(),
+                      moreFieldsButton(),
+                    ],
+                  ),
                 ),
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  final Map<String, TextEditingController> fields = {};
-  Widget topRow() {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: IconButton(
-            onPressed: () {
-              context.go(Paths.contacts);
-            },
-            icon: const Icon(
-              Icons.close,
-              size: bigIconSize,
-            ),
-          ),
-        ),
-        const Text(
-          'Create contact',
-          style: TextStyle(
-            fontSize: sizeH3,
-          ),
-        ),
-        Expanded(child: Container()),
-        InkWell(
-          onTap: () async {
-            await objectbox.addContact(
-              Contact(
-                firstName: fields['First name']?.text ?? '',
-                phone: fields['phone']?.text ?? '',
-                image: '', // TODO
-                lastName: fields['Last name']?.text,
-                company: fields['Company']?.text,
-                email: fields['Email']?.text,
-                label: fields['label']?.text,
-                significantDate: null, // TODO
-                significantDateLabel: '', // TODO
-                namePrefix: fields['Name prefix']?.text,
-                middleName: fields['Middle name']?.text,
-                nameSuffix: fields['Name suffix']?.text,
-                phoneticLastName: fields['Phonetic last name']?.text,
-                phoneticMiddleName: fields['Phonetic middle name']?.text,
-                phoneticFirstName: fields['Phonetic first name']?.text,
-                nickname: fields['Nickname']?.text,
-                fileAs: fields['File as']?.text,
-                department: fields['Department']?.text,
-                title: fields['Title']?.text,
-                addressLabel: '', // TODO
-                address: fields['Address']?.text,
-                website: fields['Website']?.text,
-                relatedPerson: fields['Realtionship']?.text,
-                relationshipToRelatedPerson: '', // TODO
-                sip: fields['sip']?.text,
-              ),
-            );
-            if(context.mounted) context.go(Paths.contacts);
-          },
-          child: Container(
-            padding: const EdgeInsets.only(
-              left: 25,
-              right: 25,
-              top: 10,
-              bottom: 10,
-            ),
-            decoration: BoxDecoration(
-              color: const Color.fromRGBO(77, 92, 142, 1),
-              borderRadius: BorderRadius.circular(25),
-            ),
-            child: const Text(
-              'Save',
-              style: TextStyle(color: Colors.white, fontSize: sizeH4),
-            ),
-          ),
-        ),
-        IconButton(
-          onPressed: () {
-            // TODO
-          },
-          icon: const Icon(
-            Icons.more_vert_outlined,
-            size: bigIconSize,
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget addPictureImageButton() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20),
-      child: Container(
-        height: MediaQuery.of(context).size.width / 3,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: lightAccentColor,
-        ),
-        child: const Center(
-          child: Icon(
-            Icons.image_outlined,
-            size: extraBigIconSize,
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget addPictureTextButton() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 10, bottom: 40),
-      child: Text(
-        'Add picture',
-        style: TextStyle(
-          color: Color.fromRGBO(77, 92, 142, 1),
-          fontSize: sizeH5,
-          fontWeight: FontWeight.w500,
         ),
       ),
     );
@@ -204,6 +105,155 @@ class _NewContactPageState extends State<NewContactPage> {
         // TODO label
       ],
     ];
+  }
+
+  List<Widget> addImageWidgets(bool isAdd) {
+    if (isAdd) return [addImageButton(), addImageTextButton()];
+    return [
+      contactImage(
+        firstName: widget.contact!.firstName,
+        size: MediaQuery.of(context).size.width / 3,
+      ),
+      changeOrRemoveImageText(),
+    ];
+  }
+
+  // Widgets
+  Widget topRow() {
+    return Row(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 10),
+          child: IconButton(
+            onPressed: () {
+              context.go(Paths.contacts);
+            },
+            icon: const Icon(
+              Icons.close,
+              size: bigIconSize,
+            ),
+          ),
+        ),
+        Text(
+          widget.contact == null ? 'Create contact' : 'Edit contact',
+          style: const TextStyle(
+            fontSize: sizeH3,
+          ),
+        ),
+        Expanded(child: Container()),
+        InkWell(
+          onTap: () async {
+            widget.contact == null ? await createContact() : await updateContact();
+            if (context.mounted) context.go(Paths.contacts);
+          },
+          child: Container(
+            padding: const EdgeInsets.only(
+              left: 25,
+              right: 25,
+              top: 10,
+              bottom: 10,
+            ),
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(77, 92, 142, 1),
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: const Text(
+              'Save',
+              style: TextStyle(color: Colors.white, fontSize: sizeH4),
+            ),
+          ),
+        ),
+        IconButton(
+          onPressed: () {
+            // TODO
+          },
+          icon: const Icon(
+            Icons.more_vert_outlined,
+            size: bigIconSize,
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget addImageButton() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Container(
+        height: MediaQuery.of(context).size.width / 3,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: lightAccentColor,
+        ),
+        child: const Center(
+          child: Icon(
+            Icons.image_outlined,
+            size: extraBigIconSize,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget addImageTextButton() {
+    return const Padding(
+      padding: EdgeInsets.only(top: 10, bottom: 40),
+      child: Text(
+        'Add picture',
+        style: TextStyle(
+          color: Color.fromRGBO(77, 92, 142, 1),
+          fontSize: sizeH5,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+
+  Widget changeOrRemoveImageText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TextButton(
+          onPressed: () {
+            // TODO!
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Icon(
+                Icons.edit_outlined,
+                color: darkAccentColor,
+              ),
+              Text(
+                'Change',
+                style: TextStyle(
+                  color: darkAccentColor,
+                ),
+              ),
+            ],
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            // TODO!
+          },
+          child: Row(
+            children: const [
+              Icon(
+                Icons.restore_from_trash_outlined,
+                color: darkAccentColor,
+              ),
+              Text(
+                'Remove',
+                style: TextStyle(
+                  color: darkAccentColor,
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   Widget moreFieldsButton() {
@@ -282,5 +332,46 @@ class _NewContactPageState extends State<NewContactPage> {
         ],
       ),
     );
+  }
+
+  // Makes a Contact object out of the current text fields
+  Contact currentContact ({int id = 0}) => Contact(
+    id: id,
+    firstName: fields['First name']?.text ?? '',
+    phone: fields['Phone']?.text ?? '',
+    image: null, // TODO
+    lastName: fields['Last name']?.text,
+    company: fields['Company']?.text,
+    email: fields['Email']?.text,
+    label: fields['label']?.text,
+    significantDate: null, // TODO
+    significantDateLabel: null, // TODO
+    namePrefix: fields['Name prefix']?.text,
+    middleName: fields['Middle name']?.text,
+    nameSuffix: fields['Name suffix']?.text,
+    phoneticLastName: fields['Phonetic last name']?.text,
+    phoneticMiddleName: fields['Phonetic middle name']?.text,
+    phoneticFirstName: fields['Phonetic first name']?.text,
+    nickname: fields['Nickname']?.text,
+    fileAs: fields['File as']?.text,
+    department: fields['Department']?.text,
+    title: fields['Title']?.text,
+    addressLabel: null, // TODO
+    address: fields['Address']?.text,
+    website: fields['Website']?.text,
+    relatedPerson: fields['Relationship']?.text,
+    relationshipToRelatedPerson: null, // TODO
+    sip: fields['sip']?.text,
+  );
+
+  // Functions
+  Future<void> createContact() async {
+    await objectbox.addContact(
+      currentContact(),
+    );
+  }
+
+  Future<void> updateContact() async {
+    await objectbox.putContact(currentContact(id: widget.contact!.id));
   }
 }
