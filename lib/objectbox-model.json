@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "2:908501058828566114",
-      "lastPropertyId": "28:8798413419112120226",
+      "lastPropertyId": "30:1427354627075067746",
       "name": "Contact",
       "properties": [
         {
@@ -140,16 +140,53 @@
           "type": 9
         },
         {
-          "id": "28:8798413419112120226",
+          "id": "29:4557963010934257729",
+          "name": "isFavorite",
+          "type": 1
+        },
+        {
+          "id": "30:1427354627075067746",
           "name": "image",
           "type": 9
         }
       ],
       "relations": []
+    },
+    {
+      "id": "3:5312442694515206892",
+      "lastPropertyId": "4:4644031084947768628",
+      "name": "RecentContact",
+      "properties": [
+        {
+          "id": "1:4692162684284981334",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:546623243445601300",
+          "name": "contactId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:4830827418152705282",
+          "relationTarget": "Contact"
+        },
+        {
+          "id": "3:4045468636651776614",
+          "name": "occurrenceDate",
+          "type": 10
+        },
+        {
+          "id": "4:4644031084947768628",
+          "name": "status",
+          "type": 6
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "2:908501058828566114",
-  "lastIndexId": "0:0",
+  "lastEntityId": "3:5312442694515206892",
+  "lastIndexId": "1:4830827418152705282",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
@@ -163,7 +200,8 @@
     6809843709899125537,
     2627841558101593035,
     8816784739354290318,
-    1791579712902758417
+    1791579712902758417,
+    8798413419112120226
   ],
   "retiredRelationUids": [],
   "version": 1
