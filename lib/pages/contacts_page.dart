@@ -1,3 +1,4 @@
+import 'package:call_app/components/contact_image.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
@@ -42,10 +43,9 @@ class _ContactsPageState extends State<ContactsPage> {
                       if (index == 0) return createNewContactWidget();
                       final List<Contact> contacts = snapshot.data ?? [];
                       return contactWidget(
-                        image: contacts[index - 1].image,
-                        name: contacts[index - 1].firstName,
-                        index: index,
-
+                        contact: contacts[index - 1],
+                        thisInitial: contacts[index - 1].firstName.substring(0, 1),
+                        previousInitial: index < 2 ? '' : contacts[index - 2].firstName.substring(0, 1),
                       );
                     },
                   );
@@ -89,21 +89,44 @@ class _ContactsPageState extends State<ContactsPage> {
     );
   }
 
-  contactWidget({required String image, required String name, int? index}) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              name.substring(0, 1),
-              key: Key('list_item_$index'),
+  Widget contactWidget({required Contact contact, required String thisInitial, required String previousInitial}) {
+    return GestureDetector(
+      onTap: () => context.go(Paths.contactInfo, extra: contact),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 20,
+                child: Center(
+                  child: Text(
+                    previousInitial.toLowerCase() == thisInitial.toLowerCase() ? '' : thisInitial.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: sizeH3,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
-          //  Image.memory(base64Decode(image), height: extraBigIconSize, width: extraBigIconSize,),
-          Text(name)
-        ],
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: contactImage(
+                firstName: contact.firstName,
+                image: contact.image,
+              ),
+            ),
+            Text(
+              contact.firstName + (contact.middleName ?? '') + (contact.lastName ?? ''),
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontSize: sizeH4,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
