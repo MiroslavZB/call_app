@@ -1,4 +1,6 @@
 import 'package:call_app/models/contact.dart';
+import 'package:call_app/models/recent_contact.dart';
+// run $ flutter pub run build_runner build
 import 'package:call_app/objectbox.g.dart';
 
 /// Provides access to the ObjectBox Store throughout the app.
@@ -6,13 +8,13 @@ class ObjectBox {
   /// The Store of this app.
   late final Store store;
 
-  /// A Box of notes.
+  /// A Box of Contacts.
   late final Box<Contact> contactsBox;
+  late final Box<RecentContact> recentsBox;
 
   ObjectBox._create(this.store) {
     contactsBox = Box<Contact>(store);
-
-    //  _putDemoData();
+    recentsBox = Box<RecentContact>(store);
   }
 
   /// Create an instance of ObjectBox to use throughout the app.
@@ -21,19 +23,10 @@ class ObjectBox {
     return ObjectBox._create(store);
   }
 
-  // void _putDemoData() {
-  //   final demoNotes = [
-  //     Contact('Quickly add a note by writing text and pressing Enter'),
-  //     Contact('Delete notes by tapping on one'),
-  //     Contact('Write a demo app for ObjectBox')
-  //   ];
-  //   store.runInTransactionAsync(TxMode.write, _putNotesInTx, demoNotes);
-  // }
-
   Stream<List<Contact>> getContacts() {
-    // Query for all notes, sorted by their date.
+    // Query for all Contacts, sorted by their date.
     // https://docs.objectbox.io/queries
-    final builder = contactsBox.query().order(Contact_.date, flags: Order.descending);
+    final builder = contactsBox.query().order(Contact_.firstName);
     // Build and watch the query,
     // set triggerImmediately to emit the query immediately on listen.
     return builder
@@ -42,23 +35,46 @@ class ObjectBox {
         .map((query) => query.find());
   }
 
-  static void _putContactsInTx(Store store, List<Contact> contacts) => store.box<Contact>().putMany(contacts);
+  Stream<List<RecentContact>> getRecents() {
+    final builder = recentsBox.query().order(RecentContact_.occurrenceDate, flags: Order.descending);
+    return builder
+        .watch(triggerImmediately: true)
+        // Map it to a list of notes to be used by a StreamBuilder.
+        .map((query) => query.find());
+  }
+
+  static void _putContact(Store store, Contact contact) {
+    store.box<Contact>().put(contact, mode: PutMode.update);
+  }
+
+  Future<void> putContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _putContact, contact);
 
   /// Add a note within a transaction.
   ///
   /// To avoid frame drops, run ObjectBox operations that take longer than a
   /// few milliseconds, e.g. putting many objects, in an isolate with its
   /// own Store instance.
-  /// For this example only a single object is put which would also be fine if
-  /// done here directly.
   Future<void> addContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
 
-  /// Note: due to [dart-lang/sdk#36983](https://github.com/dart-lang/sdk/issues/36983)
-  /// not using a closure as it may capture more objects than expected.
-  /// These might not be send-able to an isolate. See Store.runAsync for details.
   static void _addContactInTx(Store store, Contact contact) {
-    // Perform ObjectBox operations that take longer than a few milliseconds
-    // here. To keep it simple, this example just puts a single object.
     store.box<Contact>().put(contact);
+  }
+
+  static void _addRecentContactInTx(Store store, RecentContact recentContact,) {
+    store.box<RecentContact>().put(recentContact);
+  }
+
+  Future<void> addRecent({
+    required Contact contact,
+    required DateTime occurrence,
+    required int state,
+  }) async {
+    final RecentContact recentContact = RecentContact(
+      status: state,
+      occurrenceDate: occurrence,
+    );
+    recentContact.contact.target = contact;
+
+    store.runInTransactionAsync(TxMode.write, _addRecentContactInTx, recentContact);
   }
 }
