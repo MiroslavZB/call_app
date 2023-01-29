@@ -2,6 +2,7 @@ import 'package:call_app/components/contact_image.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
+import 'package:call_app/resources/keyboard_visibility_listener.dart';
 import 'package:call_app/resources/paths.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -48,12 +49,19 @@ class _NewContactPageState extends State<NewContactPage> {
               child: Padding(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      ...addImageWidgets(widget.contact == null || widget.contact!.image == null),
-                      ...allFields(),
-                      moreFieldsButton(),
-                    ],
+                  child: KeyboardVisibilityListener(
+                    listener: (isKeyboardVisible) {
+                      if (!isKeyboardVisible) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                      }
+                    },
+                    child: Column(
+                      children: [
+                        ...addImageWidgets(widget.contact == null || widget.contact!.image == null),
+                        ...allFields(),
+                        moreFieldsButton(),
+                      ],
+                    ),
                   ),
                 ),
               ),
