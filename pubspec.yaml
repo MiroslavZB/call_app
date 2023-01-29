@@ -18,6 +18,8 @@ dependencies:
   # Router
   go_router: ^6.0.1
 
+  #misc
+  worldtime: ^1.0.8
   cupertino_icons: ^1.0.2
 
 dev_dependencies:

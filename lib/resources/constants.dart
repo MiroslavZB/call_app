@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:worldtime/worldtime.dart';
 
 // Colors
 const darkAccentColor = Color.fromRGBO(77, 92, 142, 1);
@@ -8,6 +9,7 @@ const lightAccentColor = Color.fromRGBO(222, 226, 247, 1);
 const double regularIconSize = 25;
 const double bigIconSize = 30;
 const double extraBigIconSize = 40;
+const double contactImageSize = 50;
 
 // Font size
 const double sizeH1 = 26.0;
@@ -16,3 +18,7 @@ const double sizeH3 = 22.0;
 const double sizeH4 = 18.0;
 const double sizeH5 = 16.0;
 const double sizeH6 = 14.0;
+
+// Time
+final Worldtime worldTime = Worldtime();
+const String formatter = '\\h:\\m \\D.\\M.\\Y';

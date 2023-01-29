@@ -574,6 +574,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.3"
+  worldtime:
+    dependency: "direct main"
+    description:
+      name: worldtime
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.8"
   xdg_directories:
     dependency: transitive
     description:
