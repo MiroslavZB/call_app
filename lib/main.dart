@@ -73,18 +73,27 @@ final _router = GoRouter(
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: Paths.newContact,
+      name: Paths.newContact,
       pageBuilder: (context, state) {
         return NoTransitionPage(
-          child: NewContactPage(contact: state.extra as Contact?),
+          child: NewContactPage(
+            contact: state.extra as Contact?,
+            fromRecents: state.queryParams['fromRecents'],
+          ),
         );
       },
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,
       path: Paths.contactInfo,
+      name: Paths.contactInfo,
       pageBuilder: (context, state) {
         return NoTransitionPage(
-          child: ContactInfoPage(contact: state.extra as Contact),
+          child: ContactInfoPage(
+            contact: state.extra as Contact?,
+            phone: state.queryParams['phone'],
+            fromRecents: state.queryParams['fromRecents'],
+          ),
         );
       },
     ),

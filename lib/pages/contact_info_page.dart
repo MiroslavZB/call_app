@@ -7,25 +7,34 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ContactInfoPage extends StatelessWidget {
-  const ContactInfoPage({Key? key, required this.contact}) : super(key: key);
+  const ContactInfoPage({
+    Key? key,
+    required this.contact,
+    this.phone = '',
+    this.fromRecents = 'false',
+  }) : super(key: key);
 
-  final Contact contact;
+  final Contact? contact;
+  final String? fromRecents;
+  final String? phone;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
             topRow(context),
             contactImage(
-              firstName: contact.firstName,
-              image: contact.image,
+              firstName: contact == null ? '' : contact!.firstName,
+              image: contact?.image,
               size: MediaQuery.of(context).size.width / 3,
             ),
             nameWidget(),
             ...buttonsWidgets(),
-            if (contact.phone.isNotEmpty) contactInfoWidget(),
+            contactInfoWidget(),
           ],
         ),
       ),
@@ -39,7 +48,7 @@ class ContactInfoPage extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10),
           child: IconButton(
             onPressed: () {
-              context.go(Paths.contacts);
+              fromRecents == 'true' ? context.go(Paths.recents) : context.go(Paths.contacts);
             },
             icon: const Icon(
               Icons.arrow_back,
@@ -50,7 +59,11 @@ class ContactInfoPage extends StatelessWidget {
         Expanded(child: Container()),
         IconButton(
           onPressed: () {
-            context.go(Paths.newContact, extra: contact);
+            context.goNamed(
+              Paths.newContact,
+              queryParams: {'fromRecents': fromRecents},
+              extra: contact,
+            );
           },
           icon: const Icon(
             Icons.edit_outlined,
@@ -62,7 +75,7 @@ class ContactInfoPage extends StatelessWidget {
             // TODO
           },
           icon: Icon(
-            contact.isFavorite ? Icons.star : Icons.star_border,
+            contact != null && contact!.isFavorite ? Icons.star : Icons.star_border,
             size: regularIconSize,
           ),
         ),
@@ -105,7 +118,7 @@ class ContactInfoPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Text(
-        contact.firstName,
+        contact?.firstName ?? phone ?? 'Unknown',
         style: const TextStyle(
           fontSize: sizeH2,
         ),
@@ -126,7 +139,11 @@ class ContactInfoPage extends StatelessWidget {
               text: 'Call',
               onPressed: () async {
                 await objectbox.addRecent(
-                    contact: contact, phone: contact.phone, occurrence: DateTime.now(), state: 1);
+                  contact: contact,
+                  phone: contact?.phone ?? phone ?? 'Unknown',
+                  occurrence: DateTime.now(),
+                  state: 1,
+                );
               }),
           iconButtonWidget(
               icon: Icons.message_outlined,
@@ -182,7 +199,7 @@ class ContactInfoPage extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      contact.phone,
+                      contact?.phone ?? phone ?? 'Unknown',
                       style: const TextStyle(
                         fontSize: sizeH5,
                       ),
