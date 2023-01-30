@@ -44,7 +44,7 @@ class _RootPageState extends State<RootPage> {
             sharedTopBar(),
             ConstrainedBox(
               constraints: BoxConstraints(
-                maxHeight: MediaQuery.of(context).size.height - 80 - 50,
+                maxHeight: MediaQuery.of(context).size.height - 80 - 50 - 8,
               ),
               child: widget.child,
             ),
