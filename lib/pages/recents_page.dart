@@ -61,7 +61,11 @@ class _RecentsPageState extends State<RecentsPage> {
         children: [
           TextButton(
             onPressed: () {
-              context.go(Paths.contactInfo, extra: contact);
+              context.goNamed(
+                  Paths.contactInfo,
+                  queryParams: {'fromRecents' : 'true', 'phone': phone},
+                  extra: contact,
+              );
             },
             child: contactImage(firstName: contact == null ? '' : contact.firstName),
           ),

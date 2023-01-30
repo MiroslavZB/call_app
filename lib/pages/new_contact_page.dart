@@ -10,9 +10,10 @@ import 'package:go_router/go_router.dart';
 final TextEditingController controller = TextEditingController();
 
 class NewContactPage extends StatefulWidget {
-  const NewContactPage({Key? key, this.contact}) : super(key: key);
+  const NewContactPage({Key? key, this.contact, this.fromRecents = 'false'}) : super(key: key);
 
   final Contact? contact;
+  final String? fromRecents;
 
   @override
   State<NewContactPage> createState() => _NewContactPageState();
@@ -134,7 +135,11 @@ class _NewContactPageState extends State<NewContactPage> {
           padding: const EdgeInsets.only(right: 10),
           child: IconButton(
             onPressed: () {
-              context.go(Paths.contacts);
+              context.goNamed(
+                Paths.contactInfo,
+                extra: widget.contact,
+                queryParams: {'fromRecents': widget.fromRecents},
+              );
             },
             icon: const Icon(
               Icons.close,
@@ -152,7 +157,15 @@ class _NewContactPageState extends State<NewContactPage> {
         InkWell(
           onTap: () async {
             widget.contact == null ? await createContact() : await updateContact();
-            if (context.mounted) context.go(Paths.contacts);
+            if (context.mounted) {
+              context.goNamed(
+                Paths.contactInfo,
+                queryParams: {'fromRecents': widget.fromRecents},
+                extra: currentContact(
+                  id: widget.contact?.id ?? 0,
+                ),
+              );
+            }
           },
           child: Container(
             padding: const EdgeInsets.only(
