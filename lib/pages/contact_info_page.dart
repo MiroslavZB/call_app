@@ -61,7 +61,7 @@ class ContactInfoPage extends StatelessWidget {
           onPressed: () {
             context.goNamed(
               Paths.newContact,
-              queryParams: {'fromRecents': fromRecents},
+              queryParams: {'fromRecents': fromRecents, 'phone' : phone},
               extra: contact,
             );
           },

@@ -79,6 +79,7 @@ final _router = GoRouter(
           child: NewContactPage(
             contact: state.extra as Contact?,
             fromRecents: state.queryParams['fromRecents'],
+            phone: state.queryParams['phone'],
           ),
         );
       },
