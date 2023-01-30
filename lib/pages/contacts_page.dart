@@ -44,8 +44,12 @@ class _ContactsPageState extends State<ContactsPage> {
                       final List<Contact> contacts = snapshot.data ?? [];
                       return contactWidget(
                         contact: contacts[index - 1],
-                        thisInitial: contacts[index - 1].firstName.substring(0, 1),
-                        previousInitial: index < 2 ? '' : contacts[index - 2].firstName.substring(0, 1),
+                        thisInitial: contacts[index - 1].firstName.isEmpty
+                            ? ''
+                            : contacts[index - 1].firstName.substring(0, 1),
+                        previousInitial: index < 2 || contacts[index - 2].firstName.isEmpty
+                            ? ''
+                            : contacts[index - 2].firstName.substring(0, 1),
                       );
                     },
                   );

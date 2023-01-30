@@ -1,3 +1,4 @@
+import 'package:call_app/controllers/state_controller.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/pages/new_contact_page.dart';
 import 'package:call_app/pages/root.dart';
@@ -18,6 +19,7 @@ void main() async {
   // This is required so ObjectBox can get the application directory to store the database in.
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Create an instance of ObjectBox to use throughout the app.
   objectbox = await ObjectBox.create();
   runApp(const MyApp());
 
@@ -80,6 +82,7 @@ final _router = GoRouter(
             contact: state.extra as Contact?,
             fromRecents: state.queryParams['fromRecents'],
             phone: state.queryParams['phone'],
+            id: state.queryParams['id'],
           ),
         );
       },
@@ -94,6 +97,7 @@ final _router = GoRouter(
             contact: state.extra as Contact?,
             phone: state.queryParams['phone'],
             fromRecents: state.queryParams['fromRecents'],
+            id: state.queryParams['id'],
           ),
         );
       },
@@ -103,7 +107,6 @@ final _router = GoRouter(
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

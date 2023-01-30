@@ -12,11 +12,13 @@ class ContactInfoPage extends StatelessWidget {
     required this.contact,
     this.phone = '',
     this.fromRecents = 'false',
+    this.id = '0',
   }) : super(key: key);
 
   final Contact? contact;
   final String? fromRecents;
   final String? phone;
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +63,7 @@ class ContactInfoPage extends StatelessWidget {
           onPressed: () {
             context.goNamed(
               Paths.newContact,
-              queryParams: {'fromRecents': fromRecents, 'phone' : phone},
+              queryParams: {'fromRecents': fromRecents, 'phone': phone},
               extra: contact,
             );
           },
