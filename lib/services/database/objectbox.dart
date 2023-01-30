@@ -46,11 +46,7 @@ class ObjectBox {
         .map((query) => query.find());
   }
 
-  static void _putContact(Store store, Contact contact) {
-    store.box<Contact>().put(contact, mode: PutMode.update);
-  }
-
-  Future<void> putContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _putContact, contact);
+  Future<void> putContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
 
   /// Add a note within a transaction.
   ///
