@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:call_app/resources/constants.dart';
@@ -37,10 +36,10 @@ Widget contactImage({
     width: size,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
-      color: firstName == '' ? Colors.grey : fillColor,
+      color: fillColor,
     ),
     child: Center(
-      child: firstName == ''
+      child: firstName == null
           ? Icon(
               Icons.account_circle_rounded,
               color: Colors.grey[50],
