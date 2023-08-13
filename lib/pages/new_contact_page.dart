@@ -132,6 +132,7 @@ class _NewContactPageState extends State<NewContactPage> {
       contactImage(
         firstName: widget.contact!.firstName,
         size: MediaQuery.of(context).size.width / 3,
+        fillColorHex: widget.contact!.hexColor,
       ),
       changeOrRemoveImageText(),
     ];
@@ -369,8 +370,9 @@ class _NewContactPageState extends State<NewContactPage> {
   }
 
   // Makes a Contact object out of the current text fields
-  Contact currentContact({int id = 0}) => Contact(
+  Contact currentContact({int id = 0, int? hexColor}) => Contact(
         id: id,
+        hexColor: hexColor ?? 0xFF9E9E9E, // Colors.grey's hex code
         firstName: fields['First name']?.text ?? '',
         phone: fields['Phone']?.text ?? '',
         image: null, // TODO

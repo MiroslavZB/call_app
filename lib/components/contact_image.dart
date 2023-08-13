@@ -6,11 +6,12 @@ import 'package:call_app/resources/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget contactImage({
-  required String firstName,
+  required String? firstName,
+  required int? fillColorHex,
   String? image,
   double size = contactImageSize,
 }) {
-  final MaterialColor fillColor = Colors.primaries[Random().nextInt(Colors.primaries.length - 1)];
+  final Color fillColor = fillColorHex == null ? Colors.grey : Color(fillColorHex);
   if (image != null) {
     Uint8List decodedImage;
     try {

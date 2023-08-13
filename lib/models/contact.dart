@@ -9,6 +9,7 @@ class Contact {
   // Required
   String firstName;
   String phone;
+  int hexColor;
 
   // Extra
   bool isFavorite;
@@ -44,6 +45,7 @@ class Contact {
     this.id = 0,
     required this.firstName,
     required this.phone,
+    required this.hexColor,
     this.isFavorite = false,
     this.image,
     this.lastName,

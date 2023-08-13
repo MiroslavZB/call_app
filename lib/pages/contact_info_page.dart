@@ -33,6 +33,7 @@ class ContactInfoPage extends StatelessWidget {
               firstName: contact == null ? '' : contact!.firstName,
               image: contact?.image,
               size: MediaQuery.of(context).size.width / 3,
+              fillColorHex: contact?.hexColor,
             ),
             nameWidget(),
             ...buttonsWidgets(),

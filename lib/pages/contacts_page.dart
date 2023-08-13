@@ -121,6 +121,7 @@ class _ContactsPageState extends State<ContactsPage> {
               child: contactImage(
                 firstName: contact.firstName,
                 image: contact.image,
+                fillColorHex: contact.hexColor,
               ),
             ),
             Text(

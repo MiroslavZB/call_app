@@ -67,7 +67,10 @@ class _RecentsPageState extends State<RecentsPage> {
                 extra: contact,
               );
             },
-            child: contactImage(firstName: contact == null ? '' : contact.firstName),
+            child: contactImage(
+              firstName: contact?.firstName,
+              fillColorHex: contact?.hexColor,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 20, left: 10),
