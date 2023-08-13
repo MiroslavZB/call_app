@@ -1,4 +1,3 @@
-import 'package:call_app/controllers/state_controller.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/pages/new_contact_page.dart';
 import 'package:call_app/pages/root.dart';
@@ -21,6 +20,7 @@ void main() async {
 
   // Create an instance of ObjectBox to use throughout the app.
   objectbox = await ObjectBox.create();
+  await objectbox.addStartingContacts();
   runApp(const MyApp());
 
   SystemChrome.setEnabledSystemUIMode(
