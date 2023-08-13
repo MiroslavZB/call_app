@@ -82,4 +82,29 @@ class ObjectBox {
 
     store.runInTransactionAsync(TxMode.write, _addRecentContactInTx, recentContact);
   }
+
+  Future<void> addStartingContacts() async {
+    final String response = await rootBundle.loadString('assets/contacts.json');
+    final data = await json.decode(response);
+    if (data is! List) return;
+
+    for (var e in contactsBox.getAll()) {
+      contactsBox.remove(e.id);
+    }
+
+    for (Map<String, dynamic> e in data) {
+      // validates the json file
+      if ([
+        e['firstName'] is! String,
+        e['phone'] is! String,
+        e['hexColor'] is! String,
+        int.tryParse(e['hexColor']) == null,
+      ].contains(true)) return;
+      addContact(Contact(
+        firstName: e['firstName']!,
+        phone: e['phone']!,
+        hexColor: int.parse(e['hexColor']),
+      ));
+    }
+  }
 }

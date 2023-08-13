@@ -1,0 +1,52 @@
+[
+  {
+    "firstName": "Emily",
+    "phone": "+3729816547",
+    "hexColor": "0xFF374125"
+  },
+  {
+    "firstName": "Liam",
+    "phone": "+1204937685",
+    "hexColor": "0xFF7B241C"
+  },
+  {
+    "firstName": "Sophia",
+    "phone": "+9876512340",
+    "hexColor": "0xFF2E86C1"
+  },
+  {
+    "firstName": "Oliver",
+    "phone": "+6147902385",
+    "hexColor": "0xFF117A65"
+  },
+  {
+    "firstName": "Emma",
+    "phone": "+5638291746",
+    "hexColor": "0xFF9C27B0"
+  },
+  {
+    "firstName": "Aiden",
+    "phone": "+8964531207",
+    "hexColor": "0xFFE74C3C"
+  },
+  {
+    "firstName": "Ava",
+    "phone": "+7410852963",
+    "hexColor": "0xFF3498DB"
+  },
+  {
+    "firstName": "Noah",
+    "phone": "+9536827140",
+    "hexColor": "0xFFE67E22"
+  },
+  {
+    "firstName": "Isabella",
+    "phone": "+2351978640",
+    "hexColor": "0xFF1E8449"
+  },
+  {
+    "firstName": "Lucas",
+    "phone": "+6918342570",
+    "hexColor": "0xFFF39C12"
+  }
+]
