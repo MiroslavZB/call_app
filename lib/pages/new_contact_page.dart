@@ -175,9 +175,7 @@ class _NewContactPageState extends State<NewContactPage> {
               context.goNamed(
                 Paths.contactInfo,
                 queryParams: {'fromRecents': widget.fromRecents},
-                extra: currentContact(
-                  id: widget.contact?.id ?? 0,
-                ),
+                extra: currentContact(id: widget.contact?.id ?? 0),
               );
             }
           },
@@ -252,9 +250,9 @@ class _NewContactPageState extends State<NewContactPage> {
           onPressed: () {
             // TODO!
           },
-          child: Row(
+          child: const Row(
             mainAxisSize: MainAxisSize.min,
-            children: const [
+            children: [
               Icon(
                 Icons.edit_outlined,
                 color: darkAccentColor,
@@ -272,8 +270,8 @@ class _NewContactPageState extends State<NewContactPage> {
           onPressed: () {
             // TODO!
           },
-          child: Row(
-            children: const [
+          child: const Row(
+            children: [
               Icon(
                 Icons.restore_from_trash_outlined,
                 color: darkAccentColor,
@@ -296,8 +294,8 @@ class _NewContactPageState extends State<NewContactPage> {
       onTap: () {
         // TODO
       },
-      child: Row(
-        children: const [
+      child: const Row(
+        children: [
           Padding(
             padding: EdgeInsets.all(10),
             child: Icon(
@@ -357,7 +355,9 @@ class _NewContactPageState extends State<NewContactPage> {
             ),
           ),
           IconButton(
-            onPressed: firstNameArrowDown ? () {} : null,
+            onPressed: firstNameArrowDown ? () {
+              // TODO
+            } : null,
             icon: Icon(
               Icons.keyboard_arrow_down_outlined,
               size: bigIconSize,

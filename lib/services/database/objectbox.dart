@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/models/recent_contact.dart';
-// run $ flutter pub run build_runner build
+// run $ dart run build_runner build -d
 import 'package:call_app/objectbox.g.dart';
+import 'package:flutter/services.dart';
 
 /// Provides access to the ObjectBox Store throughout the app.
 class ObjectBox {
@@ -49,22 +52,15 @@ class ObjectBox {
   Future<void> putContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
 
   /// Add a note within a transaction.
-  ///
   /// To avoid frame drops, run ObjectBox operations that take longer than a
   /// few milliseconds, e.g. putting many objects, in an isolate with its
   /// own Store instance.
   Future<void> addContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
 
-  static void _addContactInTx(Store store, Contact contact) {
-    store.box<Contact>().put(contact);
-  }
+  static void _addContactInTx(Store store, Contact contact) => store.box<Contact>().put(contact);
 
-  static void _addRecentContactInTx(
-    Store store,
-    RecentContact recentContact,
-  ) {
-    store.box<RecentContact>().put(recentContact);
-  }
+  static void _addRecentContactInTx(Store store, RecentContact recentContact) =>
+      store.box<RecentContact>().put(recentContact);
 
   Future<void> addRecent({
     required Contact? contact,
