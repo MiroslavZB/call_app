@@ -89,14 +89,15 @@ class _RootPageState extends State<RootPage> {
           borderRadius: BorderRadius.circular(25),
         ),
         width: MediaQuery.of(context).size.width,
-        child: Row(
-          children: const [
-            Icon(Icons.search),
+        child: const Row(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(Icons.search),
+            ),
             Expanded(
               child: Text('Search contacts & places'),
             ),
-            Icon(Icons.keyboard_voice_outlined),
-            Icon(Icons.more_vert_outlined),
           ],
         ),
       ),
