@@ -92,48 +92,4 @@ class _ContactsPageState extends State<ContactsPage> {
       ),
     );
   }
-
-  Widget contactWidget({required Contact contact, required String thisInitial, required String previousInitial}) {
-    return GestureDetector(
-      onTap: () => context.go(Paths.contactInfo, extra: contact),
-      onLongPress: () => objectbox.contactsBox.remove(contact.id),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                width: 20,
-                child: Center(
-                  child: Text(
-                    previousInitial.toLowerCase() == thisInitial.toLowerCase() ? '' : thisInitial.toUpperCase(),
-                    style: const TextStyle(
-                      fontSize: sizeH3,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: contactImage(
-                firstName: contact.firstName,
-                image: contact.image,
-                fillColorHex: contact.hexColor,
-              ),
-            ),
-            Text(
-              '${contact.firstName} ${contact.lastName ?? ''}',
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontSize: sizeH4,
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
 }
