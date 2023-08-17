@@ -1,10 +1,5 @@
-import 'package:call_app/models/contact.dart';
-import 'package:call_app/pages/new_contact_page.dart';
-import 'package:call_app/pages/root.dart';
-import 'package:call_app/pages/contacts_page.dart';
-import 'package:call_app/pages/favorites_page.dart';
-import 'package:call_app/pages/recents_page.dart';
-import 'package:call_app/resources/paths.dart';
+import 'package:call_app/models/filters.dart';
+import 'package:call_app/router/router_config.dart';
 import 'package:call_app/services/database/objectbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
