@@ -12,15 +12,15 @@ import 'package:go_router/go_router.dart';
 
 import 'pages/contact_info_page.dart';
 
-late ObjectBox objectbox;
+late ObjectBox objectBox;
 
 void main() async {
   // This is required so ObjectBox can get the application directory to store the database in.
   WidgetsFlutterBinding.ensureInitialized();
 
   // Create an instance of ObjectBox to use throughout the app.
-  objectbox = await ObjectBox.create();
-  await objectbox.addStartingContacts();
+  objectBox = await ObjectBox.create();
+  await objectBox.addStartingContacts();
   runApp(const MyApp());
 
   SystemChrome.setEnabledSystemUIMode(

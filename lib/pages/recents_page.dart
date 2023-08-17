@@ -76,7 +76,7 @@ class _RecentsPageState extends State<RecentsPage> {
             padding: const EdgeInsets.only(right: 20, left: 10),
             child: GestureDetector(
               onLongPress: () {
-                objectbox.recentsBox.remove(id);
+                objectBox.recentsBox.remove(id);
               },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -109,7 +109,7 @@ class _RecentsPageState extends State<RecentsPage> {
           Expanded(child: Container()),
           IconButton(
             onPressed: () async {
-              await objectbox.addRecent(contact: contact, phone: phone, occurrence: DateTime.now(), state: 1);
+              await objectBox.addRecent(contact: contact, phone: phone, occurrence: DateTime.now(), state: 1);
             },
             icon: const Icon(
               Icons.call_outlined,

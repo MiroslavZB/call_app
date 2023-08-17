@@ -401,13 +401,7 @@ class _NewContactPageState extends State<NewContactPage> {
       );
 
   // Functions
-  Future<void> createContact() async {
-    await objectbox.addContact(
-      currentContact(),
-    );
-  }
+  Future<void> createContact() async => await objectBox.addContact(currentContact());
 
-  Future<void> updateContact() async {
-    await objectbox.putContact(currentContact(id: widget.contact!.id));
-  }
+  Future<void> updateContact() async => await objectBox.putContact(currentContact(id: widget.contact!.id));
 }
