@@ -68,7 +68,7 @@ class _RecentsPageState extends State<RecentsPage> {
               );
             },
             child: contactImage(
-              firstName: contact?.firstName,
+              name: contact?.name,
               fillColorHex: contact?.hexColor,
             ),
           ),
@@ -82,7 +82,7 @@ class _RecentsPageState extends State<RecentsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    contact == null ? phone : '${contact.firstName} ${contact.lastName ?? ''}',
+                    contact == null ? phone : contact.name,
                     style: const TextStyle(
                       fontSize: sizeH3,
                     ),

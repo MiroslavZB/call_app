@@ -30,7 +30,7 @@ class ContactInfoPage extends StatelessWidget {
           children: [
             topRow(context),
             contactImage(
-              firstName: contact == null ? '' : contact!.firstName,
+              name: contact?.name,
               image: contact?.image,
               size: MediaQuery.of(context).size.width / 3,
               fillColorHex: contact?.hexColor,
@@ -121,7 +121,7 @@ class ContactInfoPage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20),
       child: Text(
-        contact?.firstName ?? phone ?? 'Unknown',
+        contact?.name ?? phone ?? 'Unknown',
         style: const TextStyle(
           fontSize: sizeH2,
         ),

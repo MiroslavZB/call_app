@@ -5,7 +5,7 @@ import 'package:call_app/resources/constants.dart';
 import 'package:flutter/material.dart';
 
 Widget contactImage({
-  required String? firstName,
+  required String? name,
   required int? fillColorHex,
   String? image,
   double size = contactImageSize,
@@ -39,14 +39,14 @@ Widget contactImage({
       color: fillColor,
     ),
     child: Center(
-      child: firstName == null
+      child: name == null
           ? Icon(
               Icons.account_circle_rounded,
               color: Colors.grey[50],
               size: extraBigIconSize,
             )
           : Text(
-              firstName.substring(0, 1).toUpperCase(),
+              name.substring(0, 1).toUpperCase(),
               style: const TextStyle(
                 fontSize: sizeH1,
                 fontWeight: FontWeight.w500,

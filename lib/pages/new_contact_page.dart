@@ -130,7 +130,7 @@ class _NewContactPageState extends State<NewContactPage> {
     if (isAdd) return [addImageButton(), addImageTextButton()];
     return [
       contactImage(
-        firstName: widget.contact!.firstName,
+        name: widget.contact!.name,
         size: MediaQuery.of(context).size.width / 3,
         fillColorHex: widget.contact!.hexColor,
       ),

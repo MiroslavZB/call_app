@@ -75,6 +75,8 @@ class Contact {
 
   String get dateFormat => DateFormat('dd.MM.yyyy hh:mm:ss').format(date);
 
+  String get name => [firstName, if (lastName != null) lastName].join(' ');
+
   Map<String, dynamic> toJson() {
     return {
       'First name': firstName,
