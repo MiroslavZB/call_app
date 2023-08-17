@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class KeyboardVisibilityListener extends StatefulWidget {
   final Widget child;
-  final void Function(
-    bool isKeyboardVisible,
-  ) listener;
+  final void Function(bool isKeyboardVisible) listener;
 
   const KeyboardVisibilityListener({
     Key? key,
@@ -33,7 +31,7 @@ class KeyboardVisibilityListenerState extends State<KeyboardVisibilityListener> 
 
   @override
   void didChangeMetrics() {
-    final bottomInset = WidgetsBinding.instance.window.viewInsets.bottom;
+    final bottomInset = View.of(context).viewInsets.bottom;
     final newValue = bottomInset > 0.0;
     if (newValue != _isKeyboardVisible) {
       _isKeyboardVisible = newValue;
