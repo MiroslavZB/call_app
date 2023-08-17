@@ -2,7 +2,7 @@ import 'package:call_app/components/contact_image.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
-import 'package:call_app/resources/paths.dart';
+import 'package:call_app/router/paths.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

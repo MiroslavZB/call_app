@@ -38,73 +38,6 @@ void main() async {
   );
 }
 
-// private navigators
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorKey = GlobalKey<NavigatorState>();
-
-final _router = GoRouter(
-  initialLocation: Paths.recents,
-  navigatorKey: _rootNavigatorKey,
-  routes: [
-    ShellRoute(
-      navigatorKey: _shellNavigatorKey,
-      builder: (_, __, child) {
-        return RootPage(child: child);
-      },
-      routes: [
-        GoRoute(
-          path: Paths.favorites,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: FavoritesPage(),
-          ),
-        ),
-        GoRoute(
-          path: Paths.recents,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: RecentsPage(),
-          ),
-        ),
-        GoRoute(
-          path: Paths.contacts,
-          pageBuilder: (context, state) => const NoTransitionPage(
-            child: ContactsPage(),
-          ),
-        ),
-      ],
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: Paths.newContact,
-      name: Paths.newContact,
-      pageBuilder: (context, state) {
-        return NoTransitionPage(
-          child: NewContactPage(
-            contact: state.extra as Contact?,
-            fromRecents: state.queryParams['fromRecents'],
-            phone: state.queryParams['phone'],
-            id: state.queryParams['id'],
-          ),
-        );
-      },
-    ),
-    GoRoute(
-      parentNavigatorKey: _rootNavigatorKey,
-      path: Paths.contactInfo,
-      name: Paths.contactInfo,
-      pageBuilder: (context, state) {
-        return NoTransitionPage(
-          child: ContactInfoPage(
-            contact: state.extra as Contact?,
-            phone: state.queryParams['phone'],
-            fromRecents: state.queryParams['fromRecents'],
-            id: state.queryParams['id'],
-          ),
-        );
-      },
-    ),
-  ],
-);
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -112,10 +45,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routerConfig: _router,
+      theme: ThemeData(primarySwatch: Colors.blue),
+      routerConfig: routerConfig,
     );
   }
 }
