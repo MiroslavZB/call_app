@@ -108,6 +108,76 @@ class Contact {
     };
   }
 
+  Contact copyWith({
+    int? id,
+    DateTime? date,
+
+    // Required
+    String? firstName,
+    String? phone,
+    int? hexColor,
+
+    // Extra
+    bool? isFavorite,
+
+    // Main
+    String? image,
+    String? lastName,
+    String? company,
+    String? email,
+    String? label,
+    DateTime? significantDate,
+    String? significantDateLabel,
+    // Extra
+    String? namePrefix,
+    String? middleName,
+    String? nameSuffix,
+    String? phoneticLastName,
+    String? phoneticMiddleName,
+    String? phoneticFirstName,
+    String? nickname,
+    String? fileAs,
+    String? department,
+    String? title,
+    String? addressLabel,
+    String? address,
+    String? website,
+    String? relatedPerson,
+    String? relationshipToRelatedPerson,
+    String? sip,
+  }) {
+    return Contact(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      phone: phone ?? this.phone,
+      hexColor: hexColor ?? this.hexColor,
+      isFavorite: isFavorite ?? this.isFavorite,
+      image: image ?? this.image,
+      lastName: lastName ?? this.lastName,
+      company: company ?? this.company,
+      email: email ?? this.email,
+      label: label ?? this.label,
+      significantDate: significantDate ?? this.significantDate,
+      significantDateLabel: significantDateLabel ?? this.significantDateLabel,
+      namePrefix: namePrefix ?? this.namePrefix,
+      middleName: middleName ?? this.middleName,
+      nameSuffix: nameSuffix ?? this.nameSuffix,
+      phoneticLastName: phoneticLastName ?? this.phoneticLastName,
+      phoneticMiddleName: phoneticMiddleName ?? this.phoneticMiddleName,
+      phoneticFirstName: phoneticFirstName ?? this.phoneticFirstName,
+      nickname: nickname ?? this.nickname,
+      fileAs: fileAs ?? this.fileAs,
+      department: department ?? this.department,
+      title: title ?? this.title,
+      addressLabel: addressLabel ?? this.addressLabel,
+      address: address ?? this.address,
+      website: website ?? this.website,
+      relatedPerson: relatedPerson ?? this.relatedPerson,
+      relationshipToRelatedPerson: relationshipToRelatedPerson ?? this.relationshipToRelatedPerson,
+      sip: sip ?? this.sip,
+    );
+  }
+
   @override
   toString() => toJson().toString();
 }
