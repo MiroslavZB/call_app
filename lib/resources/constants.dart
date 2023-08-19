@@ -5,6 +5,11 @@ import 'package:worldtime/worldtime.dart';
 const darkAccentColor = Color.fromRGBO(77, 92, 142, 1);
 const lightAccentColor = Color.fromRGBO(222, 226, 247, 1);
 
+// Border Radius
+const double smallBorderRadius = 8;
+const double mediumBorderRadius = 20;
+const double bigBorderRadius = 25;
+
 // Icon size
 const double regularIconSize = 25;
 const double bigIconSize = 30;
@@ -18,6 +23,14 @@ const double sizeH3 = 22.0;
 const double sizeH4 = 18.0;
 const double sizeH5 = 16.0;
 const double sizeH6 = 14.0;
+
+// Font style
+const TextStyle styleH1 = TextStyle(fontSize: sizeH1);
+const TextStyle styleH2 = TextStyle(fontSize: sizeH2);
+const TextStyle styleH3 = TextStyle(fontSize: sizeH3);
+const TextStyle styleH4 = TextStyle(fontSize: sizeH4);
+const TextStyle styleH5 = TextStyle(fontSize: sizeH5);
+const TextStyle styleH6 = TextStyle(fontSize: sizeH6);
 
 // Time
 final Worldtime worldTime = Worldtime();

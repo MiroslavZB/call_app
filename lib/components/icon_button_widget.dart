@@ -21,7 +21,7 @@ Widget iconButtonWidget({
           ),
           Text(
             text,
-            style: const TextStyle(fontSize: sizeH4, color: darkAccentColor),
+            style: styleH4.copyWith(color: darkAccentColor),
           ),
         ],
       ),

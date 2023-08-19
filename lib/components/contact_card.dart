@@ -26,8 +26,7 @@ Widget contactCard(
                 child: Center(
                   child: Text(
                     previousInitial.toLowerCase() == thisInitial.toLowerCase() ? '' : thisInitial.toUpperCase(),
-                    style: const TextStyle(
-                      fontSize: sizeH3,
+                    style: styleH3.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -48,7 +47,7 @@ Widget contactCard(
             children: [
               Text.rich(
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontSize: sizeH4),
+                style: styleH4,
                 TextSpan(
                   children: nameFilter != null && nameFilter.isNotEmpty
                       ? highlightPattern(contact.name, nameFilter)
@@ -58,7 +57,7 @@ Widget contactCard(
               if (phoneFilter != null && phoneFilter.isNotEmpty)
                 Text.rich(
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: sizeH4),
+                  style: styleH4,
                   TextSpan(children: highlightPattern(contact.phone, phoneFilter)),
                 )
             ],

@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 
 Widget emptyViewText(String text) {
   return Center(
-    child: Text(
-      text,
-      style: const TextStyle(fontSize: sizeH4),
-    ),
+    child: Text(text, style: styleH4),
   );
 }

@@ -47,8 +47,7 @@ Widget contactImage({
             )
           : Text(
               name.substring(0, 1).toUpperCase(),
-              style: const TextStyle(
-                fontSize: sizeH1,
+              style: styleH1.copyWith(
                 fontWeight: FontWeight.w500,
                 color: Colors.white,
               ),

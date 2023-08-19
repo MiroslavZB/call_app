@@ -91,7 +91,7 @@ class _RootPageState extends State<RootPage> {
       padding: const EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
         color: Colors.grey[200],
-        borderRadius: BorderRadius.circular(25),
+        borderRadius: BorderRadius.circular(bigBorderRadius),
       ),
       width: MediaQuery.of(context).size.width,
       child: Row(

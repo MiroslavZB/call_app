@@ -154,9 +154,7 @@ class _NewContactPageState extends State<NewContactPage> {
         ),
         Text(
           widget.contact == null ? 'Create contact' : 'Edit contact',
-          style: const TextStyle(
-            fontSize: sizeH3,
-          ),
+          style: styleH3,
         ),
         Expanded(child: Container()),
         InkWell(
@@ -174,20 +172,12 @@ class _NewContactPageState extends State<NewContactPage> {
             }
           },
           child: Container(
-            padding: const EdgeInsets.only(
-              left: 25,
-              right: 25,
-              top: 10,
-              bottom: 10,
-            ),
+            padding: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
             decoration: BoxDecoration(
               color: const Color.fromRGBO(77, 92, 142, 1),
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(bigBorderRadius),
             ),
-            child: const Text(
-              'Save',
-              style: TextStyle(color: Colors.white, fontSize: sizeH4),
-            ),
+            child: Text('Save', style: styleH4.copyWith(color: Colors.white)),
           ),
         ),
         IconButton(
@@ -223,13 +213,12 @@ class _NewContactPageState extends State<NewContactPage> {
   }
 
   Widget addImageTextButton() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 10, bottom: 40),
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 40),
       child: Text(
         'Add picture',
-        style: TextStyle(
-          color: Color.fromRGBO(77, 92, 142, 1),
-          fontSize: sizeH5,
+        style: styleH5.copyWith(
+          color: darkAccentColor,
           fontWeight: FontWeight.w500,
         ),
       ),
@@ -288,9 +277,9 @@ class _NewContactPageState extends State<NewContactPage> {
       onTap: () {
         // TODO
       },
-      child: const Row(
+      child: Row(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(10),
             child: Icon(
               Icons.person_outline_rounded,
@@ -300,8 +289,7 @@ class _NewContactPageState extends State<NewContactPage> {
           ),
           Text(
             'More Fields',
-            style: TextStyle(
-              fontSize: sizeH5,
+            style: styleH5.copyWith(
               color: darkAccentColor,
               fontWeight: FontWeight.w500,
             ),
@@ -349,9 +337,11 @@ class _NewContactPageState extends State<NewContactPage> {
             ),
           ),
           IconButton(
-            onPressed: firstNameArrowDown ? () {
-              // TODO
-            } : null,
+            onPressed: firstNameArrowDown
+                ? () {
+                    // TODO
+                  }
+                : null,
             icon: Icon(
               Icons.keyboard_arrow_down_outlined,
               size: bigIconSize,

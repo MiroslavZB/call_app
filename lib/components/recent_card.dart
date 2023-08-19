@@ -20,11 +20,11 @@ Widget recentCard(
       builder: (context, state) => Padding(
         padding: const EdgeInsets.only(top: 10),
         child: InkWell(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(mediumBorderRadius),
           onTap: () => BlocProvider.of<RecentPhoneMenuState>(context).flip(),
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(mediumBorderRadius),
               color: state ? lightAccentColor.withOpacity(0.1) : Colors.white,
             ),
             child: Column(
@@ -52,9 +52,7 @@ Widget recentCard(
                           children: [
                             Text(
                               contact == null ? phone : contact.name,
-                              style: const TextStyle(
-                                fontSize: sizeH3,
-                              ),
+                              style: styleH3,
                             ),
                             Row(
                               children: [

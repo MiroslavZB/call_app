@@ -124,18 +124,14 @@ class ContactInfoPage extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20),
       child: Text(
         contact?.name ?? phone ?? 'Unknown',
-        style: const TextStyle(
-          fontSize: sizeH2,
-        ),
+        style: styleH2,
       ),
     );
   }
 
   List<Widget> buttonsWidgets() {
     return [
-      const Divider(
-        height: 40,
-      ),
+      const Divider(height: 40),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -164,9 +160,7 @@ class ContactInfoPage extends StatelessWidget {
               }),
         ],
       ),
-      const Divider(
-        height: 40,
-      ),
+      const Divider(height: 40),
     ];
   }
 
@@ -177,19 +171,16 @@ class ContactInfoPage extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: Colors.grey[200],
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(smallBorderRadius),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(bottom: 20),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
               child: Text(
                 'Contact info',
-                style: TextStyle(
-                  fontSize: sizeH5,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: styleH5.copyWith(fontWeight: FontWeight.bold),
               ),
             ),
             Row(
@@ -205,15 +196,11 @@ class ContactInfoPage extends StatelessWidget {
                   children: [
                     Text(
                       contact?.phone ?? phone ?? 'Unknown',
-                      style: const TextStyle(
-                        fontSize: sizeH5,
-                      ),
+                      style: styleH5,
                     ),
                     const Text(
                       'Mobile via ',
-                      style: TextStyle(
-                        fontSize: sizeH6,
-                      ),
+                      style: styleH6,
                     )
                   ],
                 ),
