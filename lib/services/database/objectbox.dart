@@ -98,11 +98,13 @@ class ObjectBox {
         e['hexColor'] is! String,
         int.tryParse(e['hexColor']) == null,
       ].contains(true)) return;
-      addContact(Contact(
-        firstName: e['firstName']!,
-        phone: e['phone']!,
-        hexColor: int.parse(e['hexColor']),
-      ));
+      addContact(
+        Contact(
+          firstName: e['firstName']!,
+          phone: e['phone']!,
+          hexColor: int.parse(e['hexColor']),
+        ),
+      );
     }
   }
 }
