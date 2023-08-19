@@ -1,6 +1,6 @@
 import 'package:call_app/components/empty_view_text.dart';
 import 'package:call_app/components/recent_card.dart';
-import 'package:call_app/functions/fieldsMatchFilters.dart';
+import 'package:call_app/functions/fields_match_filters.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/recent_contact.dart';
 import 'package:call_app/state/search_filters_state.dart';
