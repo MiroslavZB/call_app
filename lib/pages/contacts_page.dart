@@ -1,10 +1,12 @@
-import 'package:call_app/components/contact_image.dart';
+import 'package:call_app/components/contact_card.dart';
+import 'package:call_app/components/create_new_contact_widget.dart';
+import 'package:call_app/components/empty_view_text.dart';
+import 'package:call_app/functions/fieldsMatchFilters.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
-import 'package:call_app/resources/paths.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:call_app/router/paths.dart';
+import 'package:call_app/state/search_filters_state.dart';
 
 class ContactsPage extends StatefulWidget {
   const ContactsPage({Key? key}) : super(key: key);
@@ -23,7 +25,7 @@ class _ContactsPageState extends State<ContactsPage> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
         ),
-        onPressed: () => {
+        onPressed: () {
           // TODO
         },
         child: const Icon(Icons.dialpad_outlined, size: regularIconSize),
@@ -31,64 +33,44 @@ class _ContactsPageState extends State<ContactsPage> {
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: StreamBuilder<List<Contact>>(
-                stream: objectbox.getContacts(),
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    itemCount: snapshot.hasData ? snapshot.data!.length + 1 : 1,
-                    itemBuilder: (context, index) {
-                      if (index == 0) return createNewContactWidget();
-                      final List<Contact> contacts = snapshot.data ?? [];
-                      return contactWidget(
-                        contact: contacts[index - 1],
-                        thisInitial: contacts[index - 1].firstName.isEmpty
-                            ? ''
-                            : contacts[index - 1].firstName.substring(0, 1),
-                        previousInitial: index < 2 || contacts[index - 2].firstName.isEmpty
-                            ? ''
-                            : contacts[index - 2].firstName.substring(0, 1),
+          createNewContactWidget(context),
+          BlocBuilder<FiltersBloc, Filters>(builder: (context, state) {
+            return Expanded(
+              child: StreamBuilder<List<Contact>>(
+                  stream: objectBox.getContacts(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      final List<Contact> listContacts = state.isEmpty
+                          ? snapshot.data!
+                          : snapshot.data!
+                              .where((e) => fieldsMatchFilters(
+                                    name: e.name,
+                                    phone: e.phone,
+                                    filters: state,
+                                  ))
+                              .toList();
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        itemCount: listContacts.length,
+                        itemBuilder: (context, index) => contactCard(
+                            context,
+                            contact: listContacts[index],
+                            phoneFilter: state.phone,
+                            nameFilter: state.name,
+                            currentIniital:
+                                listContacts[index].name.isEmpty ? '' : listContacts[index].name.substring(0, 1),
+                            previousInitial: index < 1 || listContacts[index - 1].name.isEmpty
+                                ? ''
+                                : listContacts[index - 1].name.substring(0, 1),
+                          ),
                       );
-                    },
-                  );
-                }),
-          ),
+                    }
+                    return emptyViewText('No Contacts yet!');
+                  }),
+            );
+          }),
         ],
-      ),
-    );
-  }
-
-  Widget createNewContactWidget() {
-    return SizedBox(
-      height: 40,
-      child: TextButton(
-        style: ButtonStyle(
-          overlayColor: MaterialStateColor.resolveWith((states) => Colors.grey[300]!),
-        ),
-        onPressed: () {
-          context.go(Paths.newContact);
-        },
-        child: Row(
-          children: const [
-            Icon(
-              Icons.person_add_alt_outlined,
-              color: darkAccentColor,
-              size: 25,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 20),
-              child: Text(
-                'Create new contact',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: darkAccentColor,
-                ),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }
