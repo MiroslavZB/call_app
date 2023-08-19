@@ -1,5 +1,6 @@
 import 'package:call_app/components/empty_view_text.dart';
 import 'package:call_app/components/recent_card.dart';
+import 'package:call_app/functions/fieldsMatchFilters.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/recent_contact.dart';
 import 'package:call_app/state/search_filters_state.dart';
@@ -25,17 +26,13 @@ class _RecentsPageState extends State<RecentsPage> {
                   stream: objectBox.getRecents(),
                   builder: (context, snapshot) {
                     if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-                      final List<RecentContact> recentsList = state.isEmpty
-                          ? snapshot.data!
-                          : snapshot.data!.where((e) {
-                              if (state.name.isNotEmpty) {
-                                return e.contact.target?.name.toLowerCase().contains(state.name) ?? false;
-                              }
-                              if (state.phone.isNotEmpty) {
-                                return e.phone.contains(state.phone);
-                              }
-                              return false;
-                            }).toList();
+                      final List<RecentContact> recentsList = snapshot.data!
+                          .where((e) => fieldsMatchFilters(
+                                name: e.contact.target?.name,
+                                phone: e.phone,
+                                filters: state,
+                              ))
+                          .toList();
                       return ListView.builder(
                         shrinkWrap: true,
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
