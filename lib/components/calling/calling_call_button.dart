@@ -9,7 +9,7 @@ Widget callingCallButton(BuildContext context, TextEditingController callControl
       if (callController.text.length < 2) return;
       objectBox
           .addRecent(
-        contact: objectBox.getContactsStaticList().firstWhereOrNull((e) => e.phone == callController.text),
+        contact: objectBox.contactsBox.getAll().firstWhereOrNull((e) => e.phone == callController.text),
         phone: callController.text,
         occurrence: DateTime.now(),
         state: 1,

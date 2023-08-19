@@ -38,15 +38,6 @@ class ObjectBox {
         .map((query) => query.find());
   }
 
-  List<Contact> getContactsStaticList() {
-    // Query for all Contacts, sorted by their firstName.
-    // https://docs.objectbox.io/queries
-    final builder = contactsBox.query().order(Contact_.firstName);
-
-    // Execute the query immediately and return the result as a list.
-    return builder.build().find();
-  }
-
   Stream<List<RecentContact>> getRecents() {
     final builder = recentsBox.query().order(
           RecentContact_.occurrenceDate,
