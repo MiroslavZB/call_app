@@ -54,6 +54,14 @@ class ContactInfoPage extends StatelessWidget {
           ),
         ),
         Expanded(child: Container()),
+        if (contact != null)
+          IconButton(
+            onPressed: () {
+              objectBox.contactsBox.remove(contact!.id);
+              context.pop();
+            },
+            icon: const Icon(Icons.delete_forever),
+          ),
         IconButton(
           onPressed: () {
             context.pushNamed(
