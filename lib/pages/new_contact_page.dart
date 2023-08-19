@@ -352,9 +352,9 @@ class _NewContactPageState extends State<NewContactPage> {
   }
 
   // Makes a Contact object out of the current text fields
-  Contact currentContact({int id = 0, int? hexColor}) => Contact(
+  Contact currentContact({int id = 0}) => Contact(
         id: id,
-        hexColor: hexColor ?? 0xFF9E9E9E, // Colors.grey's hex code
+        hexColor: widget.contact?.hexColor ?? 0xFF9E9E9E, // Colors.grey's hex code
         firstName: fields['First name']?.text ?? '',
         phone: fields['Phone']?.text ?? '',
         image: null, // TODO
