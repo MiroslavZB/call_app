@@ -27,7 +27,7 @@ class ObjectBox {
   }
 
   Stream<List<Contact>> getContacts() {
-    // Query for all Contacts, sorted by their date.
+    // Query for all Contacts, sorted by their name.
     // https://docs.objectbox.io/queries
     final builder = contactsBox.query().order(Contact_.firstName);
     // Build and watch the query,
