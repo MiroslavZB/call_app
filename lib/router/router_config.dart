@@ -6,8 +6,6 @@ import 'package:call_app/pages/new_contact_page.dart';
 import 'package:call_app/pages/recents_page.dart';
 import 'package:call_app/pages/root.dart';
 import 'package:call_app/router/paths.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 // private navigators
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -67,8 +65,6 @@ final routerConfig = GoRouter(
           child: ContactInfoPage(
             contact: state.extra as Contact?,
             phone: state.queryParams['phone'],
-            fromRecents: state.queryParams['fromRecents'],
-            id: state.queryParams['id'],
           ),
         );
       },

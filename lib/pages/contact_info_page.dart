@@ -1,24 +1,20 @@
 import 'package:call_app/components/contact_image.dart';
+import 'package:call_app/components/icon_button_widget.dart';
 import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/router/paths.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:call_app/state/favorite_state.dart';
 
 class ContactInfoPage extends StatelessWidget {
   const ContactInfoPage({
     Key? key,
     required this.contact,
     this.phone = '',
-    this.fromRecents = 'false',
-    this.id = '0',
   }) : super(key: key);
 
   final Contact? contact;
-  final String? fromRecents;
   final String? phone;
-  final String? id;
 
   @override
   Widget build(BuildContext context) {

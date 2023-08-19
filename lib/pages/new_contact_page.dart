@@ -3,9 +3,7 @@ import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/resources/keyboard_visibility_listener.dart';
-import 'package:call_app/resources/paths.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:call_app/router/paths.dart';
 
 final TextEditingController controller = TextEditingController();
 
