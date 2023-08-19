@@ -1,10 +1,7 @@
 import 'package:call_app/models/navigation_bar_tab_item.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/router/paths.dart';
-import 'package:call_app/state/search_filters.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:call_app/state/search_filters_state.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({Key? key, required this.child}) : super(key: key);
