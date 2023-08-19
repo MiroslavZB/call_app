@@ -1,12 +1,9 @@
+import 'package:call_app/components/empty_view_text.dart';
+import 'package:call_app/components/recent_card.dart';
 import 'package:call_app/main.dart';
-import 'package:call_app/models/contact.dart';
 import 'package:call_app/models/recent_contact.dart';
-import 'package:call_app/resources/constants.dart';
-import 'package:call_app/resources/paths.dart';
+import 'package:call_app/state/search_filters_state.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../components/contact_image.dart';
 
 class RecentsPage extends StatefulWidget {
   const RecentsPage({Key? key}) : super(key: key);
@@ -22,100 +19,43 @@ class _RecentsPageState extends State<RecentsPage> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          Expanded(
-            child: StreamBuilder<List<RecentContact>>(
-                stream: objectbox.getRecents(),
-                builder: (context, snapshot) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    itemCount: snapshot.hasData ? snapshot.data!.length : 0,
-                    itemBuilder: (context, index) {
-                      final List<RecentContact> recents = snapshot.data ?? [];
-                      return recentsWidget(
-                        contact: recents[index].contact.target,
-                        occurrence: recents[index].occurrenceDate,
-                        id: recents[index].id,
-                        flag: recents[index].status,
-                        phone: recents[index].phone,
+          BlocBuilder<FiltersBloc, Filters>(builder: (context, state) {
+            return Expanded(
+              child: StreamBuilder<List<RecentContact>>(
+                  stream: objectBox.getRecents(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                      final List<RecentContact> recentsList = state.isEmpty
+                          ? snapshot.data!
+                          : snapshot.data!.where((e) {
+                              if (state.name.isNotEmpty) {
+                                return e.contact.target?.name.toLowerCase().contains(state.name) ?? false;
+                              }
+                              if (state.phone.isNotEmpty) {
+                                return e.phone.contains(state.phone);
+                              }
+                              return false;
+                            }).toList();
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        itemCount: snapshot.hasData ? snapshot.data!.length : 0,
+                        itemBuilder: (context, index) {
+                          return recentCard(
+                            context,
+                            contact: recentsList[index].contact.target,
+                            occurrence: recentsList[index].occurrenceDate,
+                            id: recentsList[index].id,
+                            flag: recentsList[index].status,
+                            phone: recentsList[index].phone,
+                          );
+                        },
                       );
-                    },
-                  );
-                }),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget recentsWidget({
-    required Contact? contact,
-    required DateTime occurrence,
-    required String phone,
-    required int flag,
-    required int id,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Row(
-        children: [
-          TextButton(
-            onPressed: () {
-              context.goNamed(
-                Paths.contactInfo,
-                queryParams: {'fromRecents': 'true', 'phone': phone, 'id': id.toString()},
-                extra: contact,
-              );
-            },
-            child: contactImage(
-              name: contact?.name,
-              fillColorHex: contact?.hexColor,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 20, left: 10),
-            child: GestureDetector(
-              onLongPress: () {
-                objectBox.recentsBox.remove(id);
-              },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    contact == null ? phone : contact.name,
-                    style: const TextStyle(
-                      fontSize: sizeH3,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        flag == 0
-                            ? Icons.call_missed
-                            : flag == 1
-                                ? Icons.call_made
-                                : Icons.call_received,
-                      ),
-                      Text(
-                        worldTime.format(dateTime: occurrence, formatter: formatter),
-                      ),
-                    ],
-                  ),
-                  const Text('Country'), // TODO
-                ],
-              ),
-            ),
-          ),
-          Expanded(child: Container()),
-          IconButton(
-            onPressed: () async {
-              await objectBox.addRecent(contact: contact, phone: phone, occurrence: DateTime.now(), state: 1);
-            },
-            icon: const Icon(
-              Icons.call_outlined,
-              size: regularIconSize,
-            ),
-          ),
+                    }
+                    return emptyViewText('No recent calls yet!');
+                  }),
+            );
+          }),
         ],
       ),
     );
