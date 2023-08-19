@@ -75,47 +75,23 @@ class ContactInfoPage extends StatelessWidget {
             size: regularIconSize,
           ),
         ),
-        IconButton(
-          onPressed: () {
-            // TODO
-          },
-          icon: Icon(
-            contact != null && contact!.isFavorite ? Icons.star : Icons.star_border,
-            size: regularIconSize,
+        BlocProvider(
+          create: (_) => FavoriteBloc(contact?.isFavorite ?? false),
+          child: BlocBuilder<FavoriteBloc, bool>(
+            builder: (context, state) => IconButton(
+              onPressed: contact == null
+                  ? null
+                  : () => objectBox
+                      .putContact(contact!.copyWith(isFavorite: !state))
+                      .whenComplete(() => BlocProvider.of<FavoriteBloc>(context).flip()),
+              icon: Icon(
+                contact != null && state ? Icons.star : Icons.star_border,
+                size: regularIconSize,
+              ),
+            ),
           ),
         ),
-        IconButton(
-          onPressed: () {
-            // TODO
-          },
-          icon: const Icon(
-            Icons.more_vert_outlined,
-            size: bigIconSize,
-          ),
-        )
       ],
-    );
-  }
-
-  Widget iconButtonWidget({
-    required IconData icon,
-    required String text,
-    required Function() onPressed,
-  }) {
-    return TextButton(
-      onPressed: onPressed,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5),
-            child: Icon(icon, size: bigIconSize, color: darkAccentColor),
-          ),
-          Text(
-            text,
-            style: const TextStyle(fontSize: sizeH4, color: darkAccentColor),
-          ),
-        ],
-      ),
     );
   }
 
