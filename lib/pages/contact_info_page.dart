@@ -194,7 +194,7 @@ class ContactInfoPage extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    Text(
+                    SelectableText(
                       contact?.phone ?? phone ?? 'Unknown',
                       style: styleH5,
                     ),
