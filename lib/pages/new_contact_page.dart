@@ -144,11 +144,7 @@ class _NewContactPageState extends State<NewContactPage> {
           padding: const EdgeInsets.only(right: 10),
           child: IconButton(
             onPressed: () {
-              context.goNamed(
-                Paths.contactInfo,
-                extra: widget.contact,
-                queryParams: {'fromRecents': widget.fromRecents, 'phone': widget.phone},
-              );
+              context.pop();
             },
             icon: const Icon(
               Icons.close,
@@ -170,9 +166,9 @@ class _NewContactPageState extends State<NewContactPage> {
               //  updateRecent();
             }
             if (context.mounted) {
-              context.goNamed(
+              context.pop();
+              context.pushReplacementNamed(
                 Paths.contactInfo,
-                queryParams: {'fromRecents': widget.fromRecents},
                 extra: currentContact(id: widget.contact?.id ?? 0),
               );
             }

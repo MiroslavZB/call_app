@@ -46,9 +46,7 @@ class ContactInfoPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 10),
           child: IconButton(
-            onPressed: () {
-              fromRecents == 'true' ? context.go(Paths.recents) : context.go(Paths.contacts);
-            },
+            onPressed: () => context.pop(),
             icon: const Icon(
               Icons.arrow_back,
               size: regularIconSize,
@@ -58,9 +56,9 @@ class ContactInfoPage extends StatelessWidget {
         Expanded(child: Container()),
         IconButton(
           onPressed: () {
-            context.goNamed(
+            context.pushNamed(
               Paths.newContact,
-              queryParams: {'fromRecents': fromRecents, 'phone': phone},
+              queryParams: {'phone': phone},
               extra: contact,
             );
           },
