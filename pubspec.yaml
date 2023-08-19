@@ -23,6 +23,7 @@ dependencies:
 
   #misc
   worldtime: ^1.0.8
+  collection: ^1.17.1
   image_picker: ^1.0.2
   cupertino_icons: ^1.0.2
 
