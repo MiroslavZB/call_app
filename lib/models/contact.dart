@@ -79,6 +79,7 @@ class Contact {
 
   Map<String, dynamic> toJson() {
     return {
+      'id': id,
       'First name': firstName,
       'Phone': phone,
       'image': image,
@@ -109,7 +110,6 @@ class Contact {
   }
 
   Contact copyWith({
-    int? id,
     DateTime? date,
 
     // Required
@@ -147,7 +147,7 @@ class Contact {
     String? sip,
   }) {
     return Contact(
-      id: id ?? this.id,
+      id: id,
       firstName: firstName ?? this.firstName,
       phone: phone ?? this.phone,
       hexColor: hexColor ?? this.hexColor,
