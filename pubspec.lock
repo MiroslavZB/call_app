@@ -266,7 +266,7 @@ packages:
     source: hosted
     version: "1.1.0"
   flat_buffers:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flat_buffers
       sha256: "23e2ced0d8e8ecdffbd9f267f49a668c74438393b9acaeac1c724123e3764263"
