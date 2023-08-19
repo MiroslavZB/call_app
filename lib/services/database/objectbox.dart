@@ -80,6 +80,7 @@ class ObjectBox {
   }
 
   Future<void> addStartingContacts() async {
+    if (contactsBox.getAll().isNotEmpty) return;
     final String response = await rootBundle.loadString('assets/contacts.json');
     final data = await json.decode(response);
     if (data is! List) return;
