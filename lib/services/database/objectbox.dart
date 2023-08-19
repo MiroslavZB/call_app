@@ -85,9 +85,10 @@ class ObjectBox {
     final data = await json.decode(response);
     if (data is! List) return;
 
-    for (var e in contactsBox.getAll()) {
-      contactsBox.remove(e.id);
-    }
+    // for clearing all of the contacts
+    // for (var e in contactsBox.getAll()) {
+    //   contactsBox.remove(e.id);
+    // }
 
     for (Map<String, dynamic> e in data) {
       // validates the json file
