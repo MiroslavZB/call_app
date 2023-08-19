@@ -3,8 +3,6 @@ import 'package:call_app/functions/highlight_pattern.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/router/paths.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 Widget contactCard(
   BuildContext context, {
@@ -14,27 +12,28 @@ Widget contactCard(
   String? phoneFilter,
   String? nameFilter,
 }) {
-  return GestureDetector(
-    onTap: () => context.pushNamed(Paths.contactInfo, extra: contact),
-    child: Padding(
-      padding: const EdgeInsets.all(8.0),
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: InkWell(
+      onTap: () => context.pushNamed(Paths.contactInfo, extra: contact),
       child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: 20,
-              child: Center(
-                child: Text(
-                  previousInitial.toLowerCase() == thisInitial.toLowerCase() ? '' : thisInitial.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: sizeH3,
-                    fontWeight: FontWeight.bold,
+          if (phoneFilter?.isNotEmpty != true && nameFilter?.isNotEmpty != true)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 20,
+                child: Center(
+                  child: Text(
+                    previousInitial.toLowerCase() == thisInitial.toLowerCase() ? '' : thisInitial.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: sizeH3,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: contactImage(
