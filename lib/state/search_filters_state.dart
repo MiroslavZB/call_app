@@ -1,7 +1,8 @@
 import 'package:call_app/models/filters.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-export 'package:flutter_bloc/flutter_bloc.dart';
+
 export 'package:call_app/models/filters.dart';
+export 'package:flutter_bloc/flutter_bloc.dart';
 
 class FiltersBloc extends Cubit<Filters> {
   FiltersBloc({required this.filters}) : super(Filters.empty());
