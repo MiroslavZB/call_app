@@ -1,12 +1,8 @@
-import 'package:call_app/models/filters.dart';
 import 'package:call_app/router/router_config.dart';
 import 'package:call_app/services/database/objectbox.dart';
-import 'package:call_app/state/search_filters.dart';
+import 'package:call_app/state/search_filters_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'pages/contact_info_page.dart';
 
 late ObjectBox objectBox;
 
@@ -40,7 +36,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (_) => FavoriteBloc(initialState: false)),
         BlocProvider(create: (_) => FiltersBloc(filters: Filters.empty())),
       ],
       child: MaterialApp.router(
