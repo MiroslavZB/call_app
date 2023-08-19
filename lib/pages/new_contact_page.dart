@@ -5,8 +5,6 @@ import 'package:call_app/resources/constants.dart';
 import 'package:call_app/resources/keyboard_visibility_listener.dart';
 import 'package:call_app/router/paths.dart';
 
-final TextEditingController controller = TextEditingController();
-
 class NewContactPage extends StatefulWidget {
   const NewContactPage({
     Key? key,
