@@ -1,3 +1,4 @@
+import 'package:call_app/functions/calling_bottom_sheet.dart';
 import 'package:call_app/models/navigation_bar_tab_item.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/router/paths.dart';
@@ -13,10 +14,13 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   late final TextEditingController searchController;
+  late final TextEditingController callController;
+
   @override
   void initState() {
     super.initState();
     searchController = TextEditingController();
+    callController = TextEditingController();
   }
 
   @override
@@ -25,6 +29,17 @@ class _RootPageState extends State<RootPage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       bottomNavigationBar: sharedBottomBar(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: darkAccentColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(bigBorderRadius),
+        ),
+        onPressed: () {
+          callController.text = '';
+          showNumbersField(context, callController);
+        },
+        child: const Icon(Icons.dialpad_outlined, size: regularIconSize),
+      ),
       body: SafeArea(
         child: Column(
           mainAxisSize: MainAxisSize.max,
