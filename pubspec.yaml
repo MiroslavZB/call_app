@@ -12,7 +12,6 @@ dependencies:
   # Database
   intl: ^0.18.0
   objectbox: ^1.7.1
-  flat_buffers: ^2.0.5
   objectbox_flutter_libs: any
 
   # Router
@@ -23,6 +22,7 @@ dependencies:
 
   #misc
   worldtime: ^1.0.8
+  image_picker: ^1.0.2
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
