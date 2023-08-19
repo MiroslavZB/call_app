@@ -7,7 +7,7 @@ import 'package:call_app/router/paths.dart';
 Widget contactCard(
   BuildContext context, {
   required Contact contact,
-  required String currentIniital,
+  required String currentInitial,
   required String previousInitial,
   String? phoneFilter,
   String? nameFilter,
@@ -25,7 +25,9 @@ Widget contactCard(
                 width: 20,
                 child: Center(
                   child: Text(
-                    previousInitial.toLowerCase() == currentIniital.toLowerCase() ? '' : currentIniital.toUpperCase(),
+                    previousInitial.toLowerCase() == currentInitial.toLowerCase()
+                        ? ''
+                        : currentInitial.toUpperCase(),
                     style: styleH3.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
