@@ -138,28 +138,28 @@ class ContactInfoPage extends StatelessWidget {
           iconButtonWidget(
             icon: Icons.call_outlined,
             text: 'Call',
-            onPressed: () => objectBox.addRecent(
-                contact: contact,
-                phone: contact?.phone ?? phone ?? 'Unknown',
-                occurrence: DateTime.now(),
-                state: 1,
-              ).whenComplete(() {
-                context.pop();
-                context.go(Paths.recents);
-              }),
+            onPressed: () => objectBox
+                .addRecent(
+              contact: contact,
+              phone: contact?.phone ?? phone ?? 'Unknown',
+              occurrence: DateTime.now(),
+              state: 1,
+            )
+                .whenComplete(() {
+              context.pop();
+              context.go(Paths.recents);
+            }),
           ),
           iconButtonWidget(
-              icon: Icons.message_outlined,
-              text: 'Text',
-              onPressed: () {
-                // TODO
-              }),
+            icon: Icons.message_outlined,
+            text: 'Text',
+            onPressed: null, // TODO
+          ),
           iconButtonWidget(
-              icon: Icons.videocam_outlined,
-              text: 'Video',
-              onPressed: () {
-                // TODO
-              }),
+            icon: Icons.videocam_outlined,
+            text: 'Video',
+            onPressed: null, // TODO
+          ),
         ],
       ),
       const Divider(height: 40),
@@ -201,23 +201,23 @@ class ContactInfoPage extends StatelessWidget {
                       style: styleH5,
                     ),
                     const Text(
-                      'Mobile via ',
+                      'Mobile',
                       style: styleH6,
                     )
                   ],
                 ),
                 Expanded(child: Container()),
-                const Padding(
-                  padding: EdgeInsets.only(right: 20),
-                  child: Icon(
-                    Icons.videocam_outlined,
-                    size: regularIconSize,
-                  ),
-                ),
-                const Icon(
-                  Icons.message_outlined,
-                  size: regularIconSize,
-                ),
+                // const Padding(
+                //   padding: EdgeInsets.only(right: 20),
+                //   child: Icon(
+                //     Icons.videocam_outlined,
+                //     size: regularIconSize,
+                //   ),
+                // ),
+                // const Icon(
+                //   Icons.message_outlined,
+                //   size: regularIconSize,
+                // ),
               ],
             )
           ],
