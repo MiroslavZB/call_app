@@ -129,12 +129,12 @@ class ContactInfoPage extends StatelessWidget {
           iconButtonWidget(
             icon: Icons.message_outlined,
             text: 'Text',
-            onPressed: null, // TODO
+            onPressed: null, // unfinished
           ),
           iconButtonWidget(
             icon: Icons.videocam_outlined,
             text: 'Video',
-            onPressed: null, // TODO
+            onPressed: null, // unfinished
           ),
         ],
       ),

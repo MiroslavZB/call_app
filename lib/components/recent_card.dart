@@ -93,28 +93,31 @@ Widget recentCard(
                 ),
                 if (state) ...[
                   const Divider(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      iconButtonWidget(
-                          icon: Icons.videocam_outlined,
-                          text: 'Video',
-                          onPressed: () {
-                            // TODO
-                          }),
-                      iconButtonWidget(
-                          icon: Icons.message_outlined,
-                          text: 'Text',
-                          onPressed: () {
-                            // TODO
-                          }),
-                      iconButtonWidget(
-                          icon: Icons.history,
-                          text: 'History',
-                          onPressed: () {
-                            // TODO
-                          }),
-                    ],
+                  Opacity(
+                    opacity: 0.2,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        iconButtonWidget(
+                            icon: Icons.videocam_outlined,
+                            text: 'Video',
+                            onPressed: () {
+                              // unfinished
+                            }),
+                        iconButtonWidget(
+                            icon: Icons.message_outlined,
+                            text: 'Text',
+                            onPressed: () {
+                              // unfinished
+                            }),
+                        iconButtonWidget(
+                            icon: Icons.history,
+                            text: 'History',
+                            onPressed: () {
+                              // unfinished
+                            }),
+                      ],
+                    ),
                   ),
                 ],
               ],
