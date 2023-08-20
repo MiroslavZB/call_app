@@ -10,6 +10,12 @@ class Contact {
   String firstName;
   String phone;
   int hexColor;
+  String? streetAddress1;
+  String? streetAddress2;
+  String? city;
+  String? state;
+  String? zip;
+  String? customId;
 
   // Extra
   bool isFavorite;
@@ -47,6 +53,12 @@ class Contact {
     required this.phone,
     required this.hexColor,
     this.isFavorite = false,
+    this.streetAddress1,
+    this.streetAddress2,
+    this.city,
+    this.state,
+    this.zip,
+    this.customId,
     this.image,
     this.lastName,
     this.company,
@@ -83,6 +95,12 @@ class Contact {
       'First name': firstName,
       'Phone': phone,
       'image': image,
+      'Street Address 1': streetAddress1,
+      'Street Address 2': streetAddress2,
+      'City': city,
+      'State': state,
+      'Zip': zip,
+      'customId' : customId,
       'isFavorite': isFavorite,
       'Last name': lastName,
       'Company': company,
@@ -116,6 +134,12 @@ class Contact {
     String? firstName,
     String? phone,
     int? hexColor,
+    String? streetAddress1,
+    String? streetAddress2,
+    String? city,
+    String? state,
+    String? zip,
+    String? customId,
 
     // Extra
     bool? isFavorite,
@@ -154,6 +178,12 @@ class Contact {
       isFavorite: isFavorite ?? this.isFavorite,
       image: image ?? this.image,
       lastName: lastName ?? this.lastName,
+      streetAddress1: streetAddress1 ?? this.streetAddress1,
+      streetAddress2: streetAddress2 ?? this.streetAddress2,
+      city: city ?? this.city,
+      state: state ?? this.state,
+      zip: zip ?? this.zip,
+      customId: customId ?? this.customId,
       company: company ?? this.company,
       email: email ?? this.email,
       label: label ?? this.label,
@@ -180,4 +210,39 @@ class Contact {
 
   @override
   toString() => toJson().toString();
+
+  static Contact? fromJson(Map<String, dynamic> e) {
+    // validates the json
+    if ([
+      e['customId'] is! String? ,
+      e['firstName'] is! String?,
+      e['lastName'] is! String?,
+      e['phone'] is! String,
+      e['streetAddress1'] is! String?,
+      e['streetAddress2'] is! String?,
+      e['city'] is! String?,
+      e['state'] is! String?,
+      e['zip'] is! String?,
+      int.tryParse(e['hexColor']) == null,
+    ].contains(true)) {
+      return null;
+    }
+
+    try {
+      return Contact(
+        customId: e['customId'],
+        firstName: e['firstName'],
+        lastName: e['lastName'],
+        phone: e['phone'],
+        streetAddress1: e['streetAddress1'],
+        streetAddress2: e['streetAddress2'],
+        city: e['city'],
+        state: e['state'],
+        zip: e['zip'],
+        hexColor: int.parse(e['hexColor']),
+      );
+    } catch (e) {
+      return null;
+    }
+  }
 }

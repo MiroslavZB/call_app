@@ -1,52 +1,122 @@
 [
   {
-    "firstName": "Emily",
-    "phone": "+3729816547",
-    "hexColor": "0xFF374125"
+    "customId": "123",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+1234567890",
+    "streetAddress1": "123 Main St",
+    "streetAddress2": "Apt 4B",
+    "city": "New York",
+    "state": "NY",
+    "zip": "10001",
+    "hexColor": "0xFFF39C12"
   },
   {
-    "firstName": "Liam",
-    "phone": "+1204937685",
-    "hexColor": "0xFF7B241C"
-  },
-  {
-    "firstName": "Sophia",
-    "phone": "+9876512340",
-    "hexColor": "0xFF2E86C1"
-  },
-  {
-    "firstName": "Oliver",
-    "phone": "+6147902385",
-    "hexColor": "0xFF117A65"
-  },
-  {
-    "firstName": "Emma",
-    "phone": "+5638291746",
-    "hexColor": "0xFF9C27B0"
-  },
-  {
-    "firstName": "Aiden",
-    "phone": "+8964531207",
-    "hexColor": "0xFFE74C3C"
-  },
-  {
-    "firstName": "Ava",
-    "phone": "+7410852963",
-    "hexColor": "0xFF3498DB"
-  },
-  {
-    "firstName": "Noah",
-    "phone": "+9536827140",
-    "hexColor": "0xFFE67E22"
-  },
-  {
-    "firstName": "Isabella",
-    "phone": "+2351978640",
+    "customId": "456",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "phone": "+9876543210",
+    "streetAddress1": "456 Elm St",
+    "streetAddress2": "",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90001",
     "hexColor": "0xFF1E8449"
   },
   {
-    "firstName": "Lucas",
-    "phone": "+6918342570",
-    "hexColor": "0xFFF39C12"
+    "customId": "789",
+    "firstName": "Michael",
+    "lastName": "Johnson",
+    "phone": "+4567890123",
+    "streetAddress1": "789 Oak Ave",
+    "streetAddress2": "Suite 8",
+    "city": "Chicago",
+    "state": "IL",
+    "zip": "60601",
+    "hexColor": "0xFFE74C3C"
+  },
+  {
+    "customId": "101",
+    "firstName": "Emily",
+    "lastName": "Williams",
+    "phone": "+3456789012",
+    "streetAddress1": "101 Pine St",
+    "streetAddress2": "",
+    "city": "San Francisco",
+    "state": "CA",
+    "zip": "94101",
+    "hexColor": "0xFF3498DB"
+  },
+  {
+    "customId": "222",
+    "firstName": "David",
+    "lastName": "Brown",
+    "phone": "+2345678901",
+    "streetAddress1": "222 Cedar Rd",
+    "streetAddress2": "Unit 5C",
+    "city": "Miami",
+    "state": "FL",
+    "zip": "33101",
+    "hexColor": "0xFF9B59B6"
+  },
+  {
+    "customId": "333",
+    "firstName": "Sophia",
+    "lastName": "Miller",
+    "phone": "+7654321098",
+    "streetAddress1": "333 Maple Ln",
+    "streetAddress2": "",
+    "city": "Seattle",
+    "state": "WA",
+    "zip": "98101",
+    "hexColor": "0xFF27AE60"
+  },
+  {
+    "customId": "444",
+    "firstName": "William",
+    "lastName": "Wilson",
+    "phone": "+5678901234",
+    "streetAddress1": "444 Walnut Ave",
+    "streetAddress2": "Suite 12D",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "73301",
+    "hexColor": "0xFFD35400"
+  },
+  {
+    "customId": "555",
+    "firstName": "Olivia",
+    "lastName": "Jones",
+    "phone": "+6789012345",
+    "streetAddress1": "555 Birch Rd",
+    "streetAddress2": "",
+    "city": "Denver",
+    "state": "CO",
+    "zip": "80201",
+    "hexColor": "0xFF2ECC71"
+  },
+  {
+    "customId": "666",
+    "firstName": "Liam",
+    "lastName": "Taylor",
+    "phone": "+7890123456",
+    "streetAddress1": "666 Oak St",
+    "streetAddress2": "Apt 9E",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85001",
+    "hexColor": "0xFF8E44AD"
+  },
+  {
+    "customId": "777",
+    "firstName": "Emma",
+    "lastName": "Wilson",
+    "phone": "+8901234567",
+    "streetAddress1": "777 Cedar Ave",
+    "streetAddress2": "",
+    "city": "Atlanta",
+    "state": "GA",
+    "zip": "30301",
+    "hexColor": "0xFFC0392B"
   }
 ]

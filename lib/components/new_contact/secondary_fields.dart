@@ -22,6 +22,11 @@ Widget secondaryFields() {
             sharedField(hint: 'Title'),
           ],
           sharedField(leading: Icons.phone_outlined, hint: 'Phone'),
+          sharedField(hint: 'Street Address 1'),
+          sharedField(hint: 'Street Address 2'),
+          sharedField(hint: 'City'),
+          sharedField(hint: 'State'),
+          sharedField(hint: 'Zip'),
           // unfinished label
           sharedField(leading: Icons.email_outlined, hint: 'Email'),
           // unfinished email label
