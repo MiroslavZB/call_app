@@ -20,6 +20,7 @@ Widget contactImage({
   return Container(
     height: size,
     width: size,
+    clipBehavior: Clip.hardEdge,
     decoration: BoxDecoration(
       shape: BoxShape.circle,
       color: fillColor,
@@ -29,6 +30,7 @@ Widget contactImage({
             decodedImage,
             height: size,
             width: size,
+            fit: BoxFit.cover,
           )
         : Center(
             child: name?.isNotEmpty != true
