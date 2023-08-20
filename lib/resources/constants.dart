@@ -4,6 +4,7 @@ import 'package:worldtime/worldtime.dart';
 // Colors
 const darkAccentColor = Color.fromRGBO(77, 92, 142, 1);
 const lightAccentColor = Color.fromRGBO(222, 226, 247, 1);
+const int flutterGreyColorHex = 0xFF9E9E9E;
 
 // Border Radius
 const double smallBorderRadius = 8;
