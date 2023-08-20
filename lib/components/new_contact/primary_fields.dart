@@ -12,7 +12,6 @@ Widget primaryFields() {
           sharedField(
             leading: Icons.person_outline_rounded,
             hint: 'First name',
-            showArrowDown: true,
             context: context,
             state: moreNameFieldsState,
           ),

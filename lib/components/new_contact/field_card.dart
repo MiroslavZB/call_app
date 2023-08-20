@@ -17,11 +17,13 @@ Widget sharedField({
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 10, left: 10),
-          child: Icon(
-            leading ?? Icons.person_outline_rounded,
-            size: bigIconSize,
-            color: leading != null ? Colors.black : Colors.transparent,
-          ),
+          child: leading != null
+              ? Icon(
+                  leading,
+                  size: bigIconSize,
+                  color: Colors.black,
+                )
+              : emptyBox(bigIconSize),
         ),
         Expanded(
           child: Container(
@@ -40,14 +42,16 @@ Widget sharedField({
             ),
           ),
         ),
-        IconButton(
-          onPressed: showArrowDown ? () => BlocProvider.of<SharedBoolState>(context!).flip() : null,
-          icon: Icon(
-            state ? Icons.keyboard_arrow_up_outlined : Icons.keyboard_arrow_down_outlined,
-            size: bigIconSize,
-            color: showArrowDown ? Colors.black : Colors.transparent,
-          ),
-        ),
+        context != null
+            ? IconButton(
+                onPressed: () => BlocProvider.of<SharedBoolState>(context).flip(),
+                icon: Icon(
+                  state ? Icons.keyboard_arrow_up_outlined : Icons.keyboard_arrow_down_outlined,
+                  size: bigIconSize,
+                  color: Colors.black,
+                ),
+              )
+            : emptyBox(bigIconSize + 18), // 18 is the padding of the IconButton
       ],
     ),
   );
