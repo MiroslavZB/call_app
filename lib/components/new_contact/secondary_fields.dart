@@ -35,7 +35,6 @@ Widget secondaryFields() {
           if (moreFieldsState) ...[
             sharedField(hint: 'SIP'),
             // unfinished relationship
-            sharedField(hint: 'Notes'),
             // unfinished label
           ],
           moreFieldsButton(context, moreFieldsState),
