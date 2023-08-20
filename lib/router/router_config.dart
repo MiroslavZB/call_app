@@ -49,9 +49,7 @@ final routerConfig = GoRouter(
         return NoTransitionPage(
           child: NewContactPage(
             contact: state.extra as Contact?,
-            fromRecents: state.queryParams['fromRecents'],
             phone: state.queryParams['phone'],
-            id: state.queryParams['id'],
           ),
         );
       },
