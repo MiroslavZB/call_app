@@ -6,7 +6,7 @@ import 'package:collection/collection.dart';
 Widget callingCallButton(BuildContext context, TextEditingController callController) {
   return InkWell(
     onTap: () {
-      if (callController.text.length < 2) return;
+      if (callController.text.length < 3) return;
       objectBox
           .addRecent(
         contact: objectBox.contactsBox.getAll().firstWhereOrNull((e) => e.phone == callController.text),

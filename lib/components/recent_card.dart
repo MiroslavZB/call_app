@@ -76,14 +76,16 @@ Widget recentCard(
                       ),
                     ),
                     IconButton(
-                      onPressed: () async {
-                        await objectBox.addRecent(
-                          contact: contact,
-                          phone: phone,
-                          occurrence: DateTime.now(),
-                          state: 1,
-                        );
-                      },
+                      onPressed: phone.length < 3
+                          ? null
+                          : () async {
+                              await objectBox.addRecent(
+                                contact: contact,
+                                phone: phone,
+                                occurrence: DateTime.now(),
+                                state: 1,
+                              );
+                            },
                       icon: const Icon(
                         Icons.call_outlined,
                         size: regularIconSize,

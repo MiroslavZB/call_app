@@ -114,17 +114,19 @@ class ContactInfoPage extends StatelessWidget {
           iconButtonWidget(
             icon: Icons.call_outlined,
             text: 'Call',
-            onPressed: () => objectBox
-                .addRecent(
-              contact: contact,
-              phone: contact?.phone ?? phone ?? 'Unknown',
-              occurrence: DateTime.now(),
-              state: 1,
-            )
-                .whenComplete(() {
-              context.pop();
-              context.go(Paths.recents);
-            }),
+            onPressed: (contact?.phone.length ?? 0) < 3
+                ? null
+                : () => objectBox
+                        .addRecent(
+                      contact: contact,
+                      phone: contact?.phone ?? phone ?? 'Unknown',
+                      occurrence: DateTime.now(),
+                      state: 1,
+                    )
+                        .whenComplete(() {
+                      context.pop();
+                      context.go(Paths.recents);
+                    }),
           ),
           iconButtonWidget(
             icon: Icons.message_outlined,
