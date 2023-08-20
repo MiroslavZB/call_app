@@ -68,9 +68,11 @@ Widget recentCard(
                                 ),
                               ],
                             ),
-                            Text(countriesFromPhoneCountryCode[phone.substring(0, 2)] ??
-                                countriesFromPhoneCountryCode[phone.substring(0, 3)] ??
-                                'Unknown'),
+                            Text(phone.length < 3
+                                ? 'Unknown'
+                                : countriesFromPhoneCountryCode[phone.substring(0, 2)] ??
+                                    countriesFromPhoneCountryCode[phone.substring(0, 3)] ??
+                                    'Unknown'),
                           ],
                         ),
                       ),
