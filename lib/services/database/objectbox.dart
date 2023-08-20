@@ -73,6 +73,9 @@ class ObjectBox {
     store.runInTransactionAsync(TxMode.write, _addRecentContactInTx, recentContact);
   }
 
+  Future<void> putRecent(RecentContact recentContact) =>
+      store.runInTransactionAsync(TxMode.write, _addRecentContactInTx, recentContact);
+
   Future<void> addStartingContacts() async {
     if (contactsBox.getAll().isNotEmpty) return;
     final String response = await rootBundle.loadString('assets/contacts.json');

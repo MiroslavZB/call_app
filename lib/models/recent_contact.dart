@@ -19,5 +19,17 @@ class RecentContact {
     required this.occurrenceDate,
   });
 
+  RecentContact copyWith(Contact contact) {
+    final RecentContact object = RecentContact(
+      id: id,
+      phone: phone,
+      status: status,
+      occurrenceDate: occurrenceDate,
+    );
+    object.contact.target = contact;
+
+    return object;
+  }
+
   String get dateFormat => DateFormat('dd.MM.yyyy hh:mm:ss').format(occurrenceDate);
 }
