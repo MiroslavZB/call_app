@@ -27,7 +27,7 @@ Widget sharedField({
         ),
         Expanded(
           child: Container(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5, top: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               border: Border.all(),
               borderRadius: BorderRadius.circular(4),
