@@ -97,8 +97,8 @@ class _RootPageState extends State<RootPage> {
   Widget sharedTopBar() {
     return Container(
       height: 50,
-      margin: const EdgeInsets.only(left: 15, right: 15),
-      padding: const EdgeInsets.only(left: 10, right: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(bigBorderRadius),
