@@ -33,7 +33,12 @@ void showNumbersField(BuildContext context, TextEditingController callController
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: Opacity(opacity: 0, child: backspaceButton(callController, false)),
+                  prefixIcon: IgnorePointer(
+                    child: Opacity(
+                      opacity: 0,
+                      child: backspaceButton(callController),
+                    ),
+                  ),
                   suffixIcon: backspaceButton(callController),
                 ),
               ),
