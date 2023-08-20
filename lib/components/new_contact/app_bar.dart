@@ -37,10 +37,17 @@ Widget appBar(
             }
             if (context.mounted) {
               context.pop();
-              context.push(
-                Paths.contactInfo,
-                extra: contact,
-              );
+              if (isNew) {
+                context.push(
+                  Paths.contactInfo,
+                  extra: contact,
+                );
+              } else {
+                context.pushReplacement(
+                  Paths.contactInfo,
+                  extra: contact,
+                );
+              }
             }
           },
           child: Container(
