@@ -1,11 +1,12 @@
 import 'package:call_app/resources/constants.dart';
 import 'package:flutter/material.dart';
 
-Widget backspaceButton(TextEditingController callController, [bool isActive = true]) {
+Widget backspaceButton(TextEditingController callController) {
   return IconButton(
-    onPressed: isActive && callController.text.isNotEmpty
-        ? () => callController.text = callController.text.substring(0, callController.text.length - 1)
-        : null,
+    onPressed: () {
+      if (callController.text.isEmpty) return;
+      callController.text = callController.text.substring(0, callController.text.length - 1);
+    },
     color: darkAccentColor,
     icon: const Icon(
       Icons.backspace,
