@@ -32,9 +32,8 @@ Widget sharedField({
               border: Border.all(),
               borderRadius: BorderRadius.circular(4),
             ),
-            child: TextFormField(
-              controller: fields[hint],
-              onChanged: (value) => fields[hint]!.text = value,
+            child: TextField(
+              controller: fields[hint]!,
               decoration: InputDecoration(
                 hintText: hint,
                 border: InputBorder.none,
