@@ -4,7 +4,7 @@ import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/router/paths.dart';
-import 'package:call_app/state/recent_phone_menu_state.dart';
+import 'package:call_app/state/shared_bool_state.dart';
 
 Widget recentCard(
   BuildContext context, {
@@ -15,13 +15,13 @@ Widget recentCard(
   required int id,
 }) {
   return BlocProvider(
-    create: (_) => RecentPhoneMenuState(),
-    child: BlocBuilder<RecentPhoneMenuState, bool>(
+    create: (_) => SharedBoolState(),
+    child: BlocBuilder<SharedBoolState, bool>(
       builder: (context, state) => Padding(
         padding: const EdgeInsets.only(top: 10),
         child: InkWell(
           borderRadius: BorderRadius.circular(mediumBorderRadius),
-          onTap: () => BlocProvider.of<RecentPhoneMenuState>(context).flip(),
+          onTap: () => BlocProvider.of<SharedBoolState>(context).flip(),
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(mediumBorderRadius),

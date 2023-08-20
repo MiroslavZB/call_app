@@ -4,7 +4,7 @@ import 'package:call_app/main.dart';
 import 'package:call_app/models/contact.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/router/paths.dart';
-import 'package:call_app/state/favorite_state.dart';
+import 'package:call_app/state/shared_bool_state.dart';
 
 class ContactInfoPage extends StatelessWidget {
   const ContactInfoPage({
@@ -76,14 +76,14 @@ class ContactInfoPage extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (_) => FavoriteBloc(contact?.isFavorite ?? false),
-          child: BlocBuilder<FavoriteBloc, bool>(
+          create: (_) => SharedBoolState(contact?.isFavorite ?? false),
+          child: BlocBuilder<SharedBoolState, bool>(
             builder: (context, state) => IconButton(
               onPressed: contact == null
                   ? null
                   : () => objectBox
                       .putContact(contact!.copyWith(isFavorite: !state))
-                      .whenComplete(() => BlocProvider.of<FavoriteBloc>(context).flip()),
+                      .whenComplete(() => BlocProvider.of<SharedBoolState>(context).flip()),
               icon: Icon(
                 contact != null && state ? Icons.star : Icons.star_border,
                 size: regularIconSize,
