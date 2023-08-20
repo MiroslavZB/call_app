@@ -1,3 +1,4 @@
+import 'package:call_app/components/empty_box.dart';
 import 'package:call_app/pages/new_contact_page.dart';
 import 'package:call_app/resources/constants.dart';
 import 'package:call_app/state/shared_bool_state.dart';
@@ -5,10 +6,9 @@ import 'package:flutter/material.dart';
 
 Widget sharedField({
   required String hint,
-  bool showArrowDown = false,
-  IconData? leading,
-  BuildContext? context,
+  BuildContext? context, // not null at 'First name'
   bool state = false,
+  IconData? leading,
 }) {
   fields[hint] ??= TextEditingController();
   return Padding(
