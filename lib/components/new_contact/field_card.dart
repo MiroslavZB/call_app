@@ -10,6 +10,7 @@ Widget sharedField({
   BuildContext? context,
   bool state = false,
 }) {
+  fields[hint] ??= TextEditingController();
   return Padding(
     padding: const EdgeInsets.only(bottom: 20),
     child: Row(
@@ -31,10 +32,7 @@ Widget sharedField({
             ),
             child: TextFormField(
               controller: fields[hint],
-              onChanged: (value) {
-                fields[hint] = TextEditingController();
-                fields[hint]!.text = value;
-              },
+              onChanged: (value) => fields[hint]!.text = value,
               decoration: InputDecoration(
                 hintText: hint,
                 border: InputBorder.none,
