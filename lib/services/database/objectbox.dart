@@ -51,12 +51,6 @@ class ObjectBox {
 
   Future<void> putContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
 
-  /// Add a note within a transaction.
-  /// To avoid frame drops, run ObjectBox operations that take longer than a
-  /// few milliseconds, e.g. putting many objects, in an isolate with its
-  /// own Store instance.
-  Future<void> addContact(Contact contact) => store.runInTransactionAsync(TxMode.write, _addContactInTx, contact);
-
   static void _addContactInTx(Store store, Contact contact) => store.box<Contact>().put(contact);
 
   static void _addRecentContactInTx(Store store, RecentContact recentContact) =>
@@ -98,7 +92,7 @@ class ObjectBox {
         e['hexColor'] is! String,
         int.tryParse(e['hexColor']) == null,
       ].contains(true)) return;
-      addContact(
+      putContact(
         Contact(
           firstName: e['firstName']!,
           phone: e['phone']!,

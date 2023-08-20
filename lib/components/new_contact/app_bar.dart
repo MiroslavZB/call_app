@@ -31,11 +31,9 @@ Widget appBar(
         child: InkWell(
           onTap: () async {
             final Contact contact = makeContact();
-            if (isNew) {
-              await objectBox.addContact(contact);
-            } else {
-              await objectBox.putContact(contact);
-              await updateRecents(contact.id);
+            await objectBox.putContact(contact);
+            if (!isNew) {
+              await updateRecents(contact);
             }
             if (context.mounted) {
               context.pop();
