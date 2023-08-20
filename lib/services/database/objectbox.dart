@@ -77,31 +77,20 @@ class ObjectBox {
       store.runInTransactionAsync(TxMode.write, _addRecentContactInTx, recentContact);
 
   Future<void> addStartingContacts() async {
-    if (contactsBox.getAll().isNotEmpty) return;
-    final String response = await rootBundle.loadString('assets/contacts.json');
-    final data = await json.decode(response);
-    if (data is! List) return;
-
     // for clearing all of the contacts
     // for (var e in contactsBox.getAll()) {
     //   contactsBox.remove(e.id);
     // }
 
+    if (contactsBox.getAll().isNotEmpty) return;
+    final String response = await rootBundle.loadString('assets/contacts.json');
+    final data = await json.decode(response);
+    if (data is! List) return;
+
     for (Map<String, dynamic> e in data) {
-      // validates the json file
-      if ([
-        e['firstName'] is! String,
-        e['phone'] is! String,
-        e['hexColor'] is! String,
-        int.tryParse(e['hexColor']) == null,
-      ].contains(true)) return;
-      putContact(
-        Contact(
-          firstName: e['firstName']!,
-          phone: e['phone']!,
-          hexColor: int.parse(e['hexColor']),
-        ),
-      );
+      final Contact? contact = Contact.fromJson(e);
+      if (contact == null) return;
+      putContact(contact);
     }
   }
 }
