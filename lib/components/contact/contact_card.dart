@@ -15,7 +15,7 @@ Widget contactCard(
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: InkWell(
-      onTap: () => context.pushNamed(Paths.contactInfo, extra: contact),
+      onTap: () => context.push(Paths.contactInfo, extra: contact),
       child: Row(
         children: [
           if (phoneFilter?.isNotEmpty != true && nameFilter?.isNotEmpty != true)
