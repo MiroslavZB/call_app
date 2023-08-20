@@ -5,8 +5,8 @@ import 'package:call_app/components/new_contact/app_bar.dart';
 import 'package:call_app/components/new_contact/change_and_remove_image_text.dart';
 import 'package:call_app/components/new_contact/primary_fields.dart';
 import 'package:call_app/components/new_contact/secondary_fields.dart';
+import 'package:call_app/functions/make_random_hex_color.dart';
 import 'package:call_app/models/contact.dart';
-import 'package:call_app/resources/constants.dart';
 import 'package:call_app/resources/keyboard_visibility_listener.dart';
 import 'package:call_app/router/paths.dart';
 
@@ -100,7 +100,7 @@ class _NewContactPageState extends State<NewContactPage> {
   // Makes a Contact object out of the current text fields
   Contact makeContact() => Contact(
         id: widget.contact?.id ?? 0,
-        hexColor: widget.contact?.hexColor ?? flutterGreyColorHex,
+        hexColor: widget.contact?.hexColor ?? getRandomHexColor(),
         firstName: fields['First name']?.text ?? '',
         phone: fields['Phone']?.text ?? '',
         image: null, // TODO
