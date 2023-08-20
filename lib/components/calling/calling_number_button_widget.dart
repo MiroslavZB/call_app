@@ -24,11 +24,20 @@ Widget numberButton(int num, TextEditingController callController) {
           color: Colors.white,
           borderRadius: BorderRadius.circular(30),
         ),
-        child: Center(
-          child: Text(
-            text + (text == '0' ? '\n+' : ''),
-            style: styleH1,
-          ),
+        child: Stack(
+          children: [
+            Center(
+              child: Text(
+                text,
+                style: styleH1.copyWith(fontWeight: FontWeight.w500),
+              ),
+            ),
+            if (text == '0')
+              const Align(
+                alignment: Alignment.bottomCenter,
+                child: Text('+', style: styleH4),
+              )
+          ],
         ),
       ),
     ),
