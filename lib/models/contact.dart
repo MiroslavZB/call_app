@@ -1,3 +1,4 @@
+import 'package:call_app/functions/make_random_hex_color.dart';
 import 'package:intl/intl.dart';
 import 'package:objectbox/objectbox.dart';
 
@@ -223,7 +224,7 @@ class Contact {
       e['city'] is! String?,
       e['state'] is! String?,
       e['zip'] is! String?,
-      int.tryParse(e['hexColor']) == null,
+     // int.tryParse(e['hexColor']) == null,
     ].contains(true)) {
       return null;
     }
@@ -239,7 +240,7 @@ class Contact {
         city: e['city'],
         state: e['state'],
         zip: e['zip'],
-        hexColor: int.parse(e['hexColor']),
+        hexColor: int.tryParse(e['hexColor'] ?? '') ?? getRandomHexColor(),
       );
     } catch (e) {
       return null;
