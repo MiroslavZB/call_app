@@ -105,7 +105,7 @@ class Contact {
       'Website': website,
       'Related person': relatedPerson,
       'Relationship to related person': relationshipToRelatedPerson,
-      'sip': sip,
+      'SIP': sip,
     };
   }
 

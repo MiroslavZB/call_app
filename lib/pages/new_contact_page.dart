@@ -148,7 +148,7 @@ class _NewContactPageState extends State<NewContactPage> {
       website: fields['Website']?.text,
       relatedPerson: fields['Relationship']?.text,
       relationshipToRelatedPerson: null, // unfinished
-      sip: fields['sip']?.text,
+      sip: fields['SIP']?.text,
     );
   }
 }
