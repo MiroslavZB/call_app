@@ -37,7 +37,7 @@ Widget appBar(
             }
             if (context.mounted) {
               context.pop();
-              context.pushReplacementNamed(
+              context.push(
                 Paths.contactInfo,
                 extra: contact,
               );
