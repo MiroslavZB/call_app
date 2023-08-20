@@ -22,10 +22,11 @@ class RecentContact {
   RecentContact copyWith(Contact contact) {
     final RecentContact object = RecentContact(
       id: id,
-      phone: phone,
       status: status,
+      phone: contact.phone,
       occurrenceDate: occurrenceDate,
     );
+
     object.contact.target = contact;
 
     return object;
