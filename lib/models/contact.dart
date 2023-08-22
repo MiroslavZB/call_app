@@ -101,7 +101,7 @@ class Contact {
       'City': city,
       'State': state,
       'Zip': zip,
-      'customId' : customId,
+      'customId': customId,
       'isFavorite': isFavorite,
       'Last name': lastName,
       'Company': company,
@@ -215,7 +215,7 @@ class Contact {
   static Contact? fromJson(Map<String, dynamic> e) {
     // validates the json
     if ([
-      e['customId'] is! String? ,
+      e['customId'] is! String?,
       e['firstName'] is! String?,
       e['lastName'] is! String?,
       e['phone'] is! String,
@@ -224,7 +224,7 @@ class Contact {
       e['city'] is! String?,
       e['state'] is! String?,
       e['zip'] is! String?,
-     // int.tryParse(e['hexColor']) == null,
+      // int.tryParse(e['hexColor']) == null,
     ].contains(true)) {
       return null;
     }
