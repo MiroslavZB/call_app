@@ -36,7 +36,7 @@ class _RecentsPageState extends State<RecentsPage> {
                       return ListView.builder(
                         shrinkWrap: true,
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        itemCount: snapshot.hasData ? snapshot.data!.length : 0,
+                        itemCount: recentsList.length,
                         itemBuilder: (context, index) {
                           return recentCard(
                             context,
